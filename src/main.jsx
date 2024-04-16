@@ -4,14 +4,13 @@ import App from './App';
 import './assets/css/styles.css';
 
 function Main() {
+    return (
+        <React.StrictMode>
 
-  return (
-    <React.StrictMode>
+            <App />
 
-      <App />
-
-    </React.StrictMode>
-  );
+        </React.StrictMode>
+    );
 }
 
 createRoot(document.getElementById('root')).render(<Main />);
