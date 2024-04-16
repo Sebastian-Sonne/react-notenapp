@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function Title({title}) {
+export default function Title({ title, className}) {
     return (
         <>
-            <h1 className="text-gray-700 text-2xl font-semibold mt-4">
+            <h1 className={className}>
                 {title}
             </h1>
         </>
