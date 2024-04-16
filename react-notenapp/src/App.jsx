@@ -1,13 +1,16 @@
+import Header from './Header';
+import SubHeader from './SubHeader';
+import Table from './Table';
+import Footer from './Footer';
 
-
-function App() {
-  
-
+export default function App() {
   return (
     <>
-      <h1>TEst</h1>
-    </>
-  )
-}
+      <Header />
+      <SubHeader />
 
-export default App
+      <Table />
+      <Footer />
+    </>
+  );
+}
