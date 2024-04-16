@@ -2,7 +2,12 @@
 export default {
   content: ["./src/*.jsx", "./src/components/*.jsx"],
   theme: {
-    extend: {},
+    extend: {
+        colors: {
+          'notenapp-blue': '#008ee6',
+          'notenapp-blue-hover': '#006eb2',
+        },
+    },
   },
   plugins: [],
 }
