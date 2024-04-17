@@ -5,7 +5,7 @@ import SubHeader from './components/SubHeader';
 import TableContainer from './components/TableContainer';
 import Footer from './components/Footer';
 
-import NewStudentForm from './components/NewStudentForm';
+import NewStudentBox from './components/NewStudentBox';
 import StudentInfo from './components/StudentInfo';
 import ConfirmDeleteBox from './components/confirmDelete';
 
@@ -25,8 +25,8 @@ export default function App() {
     const [showInfo, setShowInfo] = useState(false);
     const toggleInfo = () => {setShowInfo(!showInfo)};
 
-    const [showConfirmDelete, setConfirmDelete] = useState(false);
-    const toggleConfirmDelete = () => {setConfirmDelete(!showConfirmDelete)}
+    const [showConfirmDelete, setConfirmDelete] = useState(true);
+    const toggleConfirmDelete = () => {setConfirmDelete(!showConfirmDelete)};
 
     return (
         <div onKeyDown={handleKeyDown} className='flex justify-center min-h-screen'>
@@ -37,7 +37,7 @@ export default function App() {
                 <TableContainer />
                 <Footer />
 
-                <NewStudentForm isVisible={showForm} toggleForm={toggleForm}/>
+                <NewStudentBox isVisible={showForm} toggleForm={toggleForm}/>
                 <StudentInfo isVisible={showInfo} toggleInfo={toggleInfo} />
 
                 <ConfirmDeleteBox isVisible={showConfirmDelete} toggleBox={toggleConfirmDelete} />
