@@ -1,23 +1,27 @@
 import React, { useState } from 'react';
 
-import Header from './Header';
-import SubHeader from './SubHeader';
-import TableContainer from './TableContainer';
-import Footer from './Footer';
+import Header from './components/Header';
+import SubHeader from './components/SubHeader';
+import TableContainer from './components/TableContainer';
+import Footer from './components/Footer';
 
-import NewStudentForm from './NewStudentForm';
+import NewStudentForm from './components/NewStudentForm';
+import StudentInfo from './components/StudentInfo';
 
 export default function App() {
     
     const handleKeyDown = (event) => {
         if (event.key === 'Escape') {
             if (showForm) toggleForm();
+            if (showInfo) toggleInfo();
         }
     };
 
     const [showForm, setShowForm] = useState(false);
     const toggleForm = () => {setShowForm(!showForm)};
 
+    const [showInfo, setShowInfo] = useState(false);
+    const toggleInfo = () => {setShowInfo(!showInfo)};
 
     return (
         <div onKeyDown={handleKeyDown} className='flex justify-center min-h-screen'>
@@ -29,6 +33,7 @@ export default function App() {
                 <Footer />
 
                 <NewStudentForm isVisible={showForm} toggleForm={toggleForm}/>
+                <StudentInfo isVisible={showInfo} toggleInfo={toggleInfo} />
 
             </div>
         </div>
