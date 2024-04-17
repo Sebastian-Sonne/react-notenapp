@@ -1,6 +1,6 @@
 import React from 'react';
 import Title from './Title';
-import { ExitButton } from './Button';
+import Button, { AddGradeButton, ExitButton, RemoveGradeButton } from './Button';
 
 export default function NewStudentForm({ isVisible, toggleForm }) {
 
@@ -56,23 +56,9 @@ export default function NewStudentForm({ isVisible, toggleForm }) {
                                                 className="writtenGrade w-full px-4 py-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none" />
                                         </div>
                                     </div>
-                                    <div className="w-full md:w-1/4 px-2 flex items-end">
-                                        <button id="add-written-grade-button" type="button"
-                                            className="flex items-center justify-center mt-2 md:mt-0 w-full px-4 py-2 rounded-lg bg-notenapp-blue text-white hover:bg-notenapp-blue-hover transition-all">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <line x1="12" y1="4" x2="12" y2="20" stroke="white" strokeWidth="2" />
-                                                <line x1="4" y1="12" x2="20" y2="12" stroke="white" strokeWidth="2" />
-                                            </svg>
-                                        </button>
-                                        <button id="remove-written-grade-button" type="button"
-                                            className="flex items-center justify-center mt-2 md:mt-0 w-full px-4 py-2 ml-4 rounded-lg bg-red-700 text-white hover:bg-red-600 transition-all">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <line x1="6" y1="6" x2="18" y2="18" stroke="white" strokeWidth="2" />
-                                                <line x1="18" y1="6" x2="6" y2="18" stroke="white" strokeWidth="2" />
-                                            </svg>
-                                        </button>
+                                    <div className="w-full md:w-1/4 px-2 flex items-end">             
+                                        <AddGradeButton />
+                                        <RemoveGradeButton />
                                     </div>
                                 </div>
 
@@ -86,31 +72,17 @@ export default function NewStudentForm({ isVisible, toggleForm }) {
                                         </div>
                                     </div>
                                     <div className="w-full md:w-1/4 px-2 flex items-end">
-                                        <button id="add-oral-grade-button" type="button"
-                                            className="flex items-center justify-center mt-2 md:mt-0 w-full px-4 py-2 rounded-lg bg-notenapp-blue text-white hover:bg-notenapp-blue-hover transition-all">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <line x1="12" y1="4" x2="12" y2="20" stroke="white" strokeWidth="2" />
-                                                <line x1="4" y1="12" x2="20" y2="12" stroke="white" strokeWidth="2" />
-                                            </svg>
-                                        </button>
-                                        <button id="remove-oral-grade-button" type="button"
-                                            className="flex items-center justify-center mt-2 md:mt-0 w-full px-4 py-2 ml-4 rounded-lg bg-red-700 text-white hover:bg-red-600 transition-all">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <line x1="6" y1="6" x2="18" y2="18" stroke="white" strokeWidth="2" />
-                                                <line x1="18" y1="6" x2="6" y2="18" stroke="white" strokeWidth="2" />
-                                            </svg>
-                                        </button>
+                                        <AddGradeButton />
+                                        <RemoveGradeButton />
                                     </div>
                                 </div>
 
                                 <br /><br />
 
-                                <button type="submit"
-                                    className="mt-20 px-6 py-2 rounded-lg bg-green-600 text-white font-semibold hover:bg-green-500 transition-all">
-                                    Schüler Hinzufügen
-                                </button>
+                                <Button type={'submit'} 
+                                    content={'Schüler Hinzufügen'} 
+                                    className={'mt-20 px-6 py-2 rounded-lg bg-green-600 text-white font-semibold hover:bg-green-500 transition-all'} 
+                                />
                             </form>
                         </div>
                     </div>

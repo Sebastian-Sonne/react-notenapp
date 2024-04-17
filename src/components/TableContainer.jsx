@@ -1,5 +1,5 @@
 import React from 'react';
-import InfoButton from './Button';
+import { InfoButton } from './Button';
 
 export default function TableContainer() {
     return (
