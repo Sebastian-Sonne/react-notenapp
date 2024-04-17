@@ -14,7 +14,7 @@ export const StudentInfo = ({ isVisible, toggleInfo }) => {
                             <div className="flex justify-between">
                                 <Title title={'Schüler Info'} className={'text-2xl font-semibold text-gray-800'} />
 
-                                <ExitButton onclick={toggleInfo} />
+                                <ExitButton onClick={toggleInfo} />
                             </div>
 
                             <form id="student-data-form" className="flex flex-col space-y-4">

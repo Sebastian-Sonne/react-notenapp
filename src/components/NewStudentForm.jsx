@@ -13,7 +13,7 @@ export default function NewStudentForm({ isVisible, toggleForm }) {
                         <div className="p-6 bg-gray-100 rounded-lg shadow-lg">
                             <div className="flex justify-between">
                                 <Title title={'Schüler Hinzufügen'} className={'text-2xl font-semibold text-gray-800'} />
-                                <ExitButton onclick={toggleForm}/>
+                                <ExitButton onClick={toggleForm}/>
                             </div>
 
                             <form id="add-student-form" className="flex flex-col space-y-4">

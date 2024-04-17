@@ -7,13 +7,15 @@ import Footer from './components/Footer';
 
 import NewStudentForm from './components/NewStudentForm';
 import StudentInfo from './components/StudentInfo';
+import ConfirmDeleteBox from './components/confirmDelete';
 
 export default function App() {
     
     const handleKeyDown = (event) => {
         if (event.key === 'Escape') {
             if (showForm) toggleForm();
-            if (showInfo) toggleInfo();
+            if (showInfo && !showConfirmDelete) toggleInfo();
+            if (showConfirmDelete) toggleConfirmDelete();
         }
     };
 
@@ -22,6 +24,9 @@ export default function App() {
 
     const [showInfo, setShowInfo] = useState(false);
     const toggleInfo = () => {setShowInfo(!showInfo)};
+
+    const [showConfirmDelete, setConfirmDelete] = useState(false);
+    const toggleConfirmDelete = () => {setConfirmDelete(!showConfirmDelete)}
 
     return (
         <div onKeyDown={handleKeyDown} className='flex justify-center min-h-screen'>
@@ -35,6 +40,7 @@ export default function App() {
                 <NewStudentForm isVisible={showForm} toggleForm={toggleForm}/>
                 <StudentInfo isVisible={showInfo} toggleInfo={toggleInfo} />
 
+                <ConfirmDeleteBox isVisible={showConfirmDelete} toggleBox={toggleConfirmDelete} />
             </div>
         </div>
     );
