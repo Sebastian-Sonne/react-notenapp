@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import * as storageModule from './assets/js/storage.js';
 
 import Header from './components/Header';
 import SubHeader from './components/SubHeader';
@@ -6,18 +7,24 @@ import TableContainer from './components/TableContainer';
 import Footer from './components/Footer';
 
 import NewStudentBox from './components/NewStudentBox';
-import StudentInfo from './components/StudentInfo';
-import ConfirmDeleteBox from './components/confirmDelete';
+import StudentInfoBox from './components/StudentInfo';
 
 export default function App() {
     
     const handleKeyDown = (event) => {
         if (event.key === 'Escape') {
             if (showForm) toggleForm();
-            if (showInfo && !showConfirmDelete) toggleInfo();
-            if (showConfirmDelete) toggleConfirmDelete();
+            if (showInfo) toggleInfo();
         }
     };
+
+    const [students, setStudents] = useState(storageModule.loadData('students'));
+    const addStudent = (student) => {
+        storageModule.saveStudent(student);
+        setStudents(students.push(student));
+    }
+
+    const [currentStudent, setCurrentStudent] = useState('');
 
     const [showForm, setShowForm] = useState(false);
     const toggleForm = () => {setShowForm(!showForm)};
@@ -25,22 +32,25 @@ export default function App() {
     const [showInfo, setShowInfo] = useState(false);
     const toggleInfo = () => {setShowInfo(!showInfo)};
 
-    const [showConfirmDelete, setConfirmDelete] = useState(true);
-    const toggleConfirmDelete = () => {setConfirmDelete(!showConfirmDelete)};
-
     return (
         <div onKeyDown={handleKeyDown} className='flex justify-center min-h-screen'>
             <div className='flex flex-col max-w-6xl w-full'>
                 <Header />
                 <SubHeader toggleForm={toggleForm}/>
 
-                <TableContainer />
+                <TableContainer toggleInfo={toggleInfo} setStudent={setCurrentStudent} />
                 <Footer />
 
-                <NewStudentBox isVisible={showForm} toggleForm={toggleForm}/>
-                <StudentInfo isVisible={showInfo} toggleInfo={toggleInfo} />
+                <NewStudentBox 
+                    isVisible={showForm} 
+                    toggleForm={toggleForm}
+                    addStudents={addStudent} />
 
-                <ConfirmDeleteBox isVisible={showConfirmDelete} toggleBox={toggleConfirmDelete} />
+                <StudentInfoBox
+                    isVisible={showInfo} 
+                    toggleInfo={toggleInfo} 
+                    student={currentStudent} />
+
             </div>
         </div>
     );

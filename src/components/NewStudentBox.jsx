@@ -2,7 +2,7 @@ import React from 'react';
 import Title from './Title';
 import Button, { AddGradeButton, ExitButton, RemoveGradeButton } from './Button';
 
-export default function NewStudentBox({ isVisible, toggleForm }) {
+export default function NewStudentBox({ isVisible, toggleForm, addStudents }) {
 
     return (
         <>

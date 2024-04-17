@@ -19,7 +19,7 @@ export const ConfirmDeleteBox = ({ isVisible, toggleBox }) => {
     );
 }
 
-const ConfirmDeleteContent = ({ toggleBox }) => {
+const ConfirmDeleteContent = ({ toggleBox, student }) => {
     return (
         <div className="p-6 bg-gray-100 rounded-lg shadow-lg">
             <div className="flex flex-col">

@@ -1,14 +1,14 @@
 import React from 'react';
 import { InfoButton } from './Button';
 
-export default function TableContainer() {
+export default function TableContainer({ toggleInfo, setStudent }) {
     return (
         <div className='w-full px-4'>
             <div className='w-full p-4 bg-gray-50 rounded-lg'>
                 <div className="w-full rounded-t-lg overflow-x-auto">
                     <table className="table-auto border-collapse w-full">
                         <TableHead />
-                        <TableBody />
+                        <TableBody toggleInfo={toggleInfo} setStudent={setStudent} />
                     </table>
                 </div>
             </div>
@@ -30,10 +30,10 @@ function TableHead() {
     );
 }
 
-function TableBody() {
+function TableBody({ toggleInfo, setStudent }) {
     return (
         <tbody id="students-table-body" className="text-gray-600 bg-white">
-            <tr tabIndex="0" className="hover:bg-gray-100 cursor-pointer">
+            <tr tabIndex="0" className="hover:bg-gray-100 cursor-pointer" onClick={toggleInfo}>
                 <td className="border px-4 py-2 whitespace-nowrap">000009</td>
                 <td className="border px-4 py-2 whitespace-nowrap">Sophia Martinez</td>
                 <td className="border px-4 py-2 whitespace-nowrap">sophia.martinez@hotmail.com</td>

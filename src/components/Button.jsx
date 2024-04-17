@@ -20,9 +20,9 @@ export function ExitButton({ onClick }) {
     );
 }
 
-export function InfoButton() {
+export function InfoButton({ onClick }) {
     return (
-        <Button content={'Info'} type={'button'}
+        <Button content={'Info'} type={'button'} onClick={onClick}
             className={'mx-2 my-1 py-[3px] px-2 text-center text-white font-semibold bg-notenapp-blue hover:bg-notenapp-blue-hover focus:bg-notenapp-blue-hover rounded-lg cursor-pointer transition-all'} />
     );
 }
