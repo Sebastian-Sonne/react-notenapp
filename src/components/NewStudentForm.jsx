@@ -1,7 +1,8 @@
 import React from 'react';
+import Title from './Title';
 import { ExitButton } from './Button';
 
-export default function NewStudentForm({ isVisible }) {
+export default function NewStudentForm({ isVisible, toggleForm }) {
 
     return (
         <>
@@ -11,9 +12,8 @@ export default function NewStudentForm({ isVisible }) {
                     <div className="sm:max-w-4xl w-full mx-auto my-auto p-4">
                         <div className="p-6 bg-gray-100 rounded-lg shadow-lg">
                             <div className="flex justify-between">
-                                <h2 className="text-2xl font-semibold text-gray-800">Schüler Hinzufügen</h2>
-
-                                <ExitButton />
+                                <Title title={'Schüler Hinzufügen'} className={'text-2xl font-semibold text-gray-800'} />
+                                <ExitButton onclick={toggleForm}/>
                             </div>
 
                             <form id="add-student-form" className="flex flex-col space-y-4">
