@@ -29,4 +29,17 @@ export const StudentForm = () => {
     );
 }
 
-export default StudentForm
+export const InfoForm = () => {
+    return (
+        <form id="add-student-form" className="flex flex-col space-y-4">
+            {/* Name & ID */}
+            <div className="flex flex-wrap -mx-2">
+                <NameInput disabled={true}/>
+                <IdInput disabled={true}/>
+            </div>
+
+            {/* email */}
+            <EmailInput disabled={true}/>
+        </form>
+    );
+}

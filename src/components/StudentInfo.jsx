@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Title from './Title';
 import Button, { ExitButton } from './Button';
 import ConfirmDeleteBox from "./confirmDelete";
+import { InfoForm } from './Form';
 
 export const StudentInfoBox = ({ isVisible, toggleInfo, student }) => {
 
@@ -40,30 +41,16 @@ export const StudentInfoBox = ({ isVisible, toggleInfo, student }) => {
                     <div className="sm:max-w-4xl w-full mx-auto my-auto p-4">
                         <div className="p-6 bg-gray-100 rounded-lg shadow-lg">
                             <div className="flex justify-between">
+
                                 <Title title={'Schüler Info'} className={'text-2xl font-semibold text-gray-800'} />
 
                                 <ExitButton onClick={toggleInfo} />
+
                             </div>
 
                             <form id="student-data-form" className="flex flex-col space-y-4">
-                                <div className="flex flex-wrap -mx-2">
-                                    <div className="w-full md:w-1/2 px-2 mt-4">
-                                        <label htmlFor="name" className="text-gray-800">Name:</label>
-                                        <input type="text" id="info-name" name="info-name" value={student.name} disabled required
-                                            className="w-full px-4 py-2 rounded-lg text-gray-900 border border-gray-300 bg-gray-200 focus:outline-none" />
-                                    </div>
-                                    <div className="w-full md:w-1/2 px-2 mt-4">
-                                        <label htmlFor="id" className="text-gray-800">Schüler ID:</label>
-                                        <input type="text" id="info-id" name="info-id" value={student.id} disabled required
-                                            className="w-full px-4 py-2 rounded-lg text-gray-900 border border-gray-300 bg-gray-200 focus:outline-none" />
-                                    </div>
-                                </div>
-
-                                <div className="flex flex-col">
-                                    <label htmlFor="email" className="text-gray-800">Email:</label>
-                                    <input type="email" id="info-email" name="info-email" value={student.email} disabled required
-                                        className="w-full px-4 py-2 rounded-lg text-gray-900 border border-gray-300 bg-gray-200 focus:outline-none" />
-                                </div>
+                                
+                                <InfoForm />
 
                                 <div className="w-full">
                                     <label htmlFor="info-grades" className="text-gray-800">Noten:</label>

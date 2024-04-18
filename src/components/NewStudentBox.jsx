@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Title from './Title';
 import { ExitButton} from './Button';
-import StudentForm from './Form';
+import { StudentForm } from './Form';
 
 export default function NewStudentBox({ isVisible, toggleForm, addStudents }) {
     

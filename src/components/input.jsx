@@ -28,7 +28,9 @@ export const NameInput = ({ disabled }) => {
                 className='w-full px-4 py-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none'
             />
 
-            <ErrorMessage content={'Inkorrekter Schülername'} />
+            {!disabled && (
+                <ErrorMessage content={'Inkorrekter Schülername'} />
+            )}
         </div>
     );
 }
@@ -46,7 +48,10 @@ export const IdInput = ({ disabled }) => {
                 className='w-full px-4 py-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none'
             />
 
-            <ErrorMessage content={'Inkorrekte Schüler ID.'} />
+            {!disabled && (
+                <ErrorMessage content={'Inkorrekte Schüler ID.'} />
+            )}
+
         </div>
     );
 }
@@ -63,7 +68,9 @@ export const EmailInput = ({ disabled }) => {
                 disabled={disabled}
                 className='w-full px-4 py-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none' />
 
-            <ErrorMessage content={'Inkorrekte Schüler Email'} />
+            {!disabled && (
+                <ErrorMessage content={'Inkorrekte Schüler Email'} />
+            )}
         </div>
     );
 }
