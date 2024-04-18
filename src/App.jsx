@@ -10,14 +10,6 @@ import NewStudentBox from './components/NewStudentBox';
 import StudentInfoBox from './components/StudentInfo';
 
 export default function App() {
-    
-    const handleKeyDown = (event) => {
-        if (event.key === 'Escape') {
-            if (showForm) toggleForm();
-            if (showInfo) toggleInfo();
-        }
-    };
-
     const [students, setStudents] = useState(storageModule.loadData('students'));
     const addStudent = (student) => {
         storageModule.saveStudent(student);
@@ -33,7 +25,7 @@ export default function App() {
     const toggleInfo = () => {setShowInfo(!showInfo)};
 
     return (
-        <div onKeyDown={handleKeyDown} className='flex justify-center min-h-screen'>
+        <div className='flex bg-slate-400 justify-center min-h-screen'>
             <div className='flex flex-col max-w-6xl w-full'>
                 <Header />
                 <SubHeader toggleForm={toggleForm}/>

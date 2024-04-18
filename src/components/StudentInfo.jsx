@@ -1,13 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Title from './Title';
 import Button, { ExitButton } from './Button';
 import ConfirmDeleteBox from "./confirmDelete";
 
 export const StudentInfoBox = ({ isVisible, toggleInfo, student }) => {
 
+    useEffect(() => {
+        if (isVisible) {
+            document.addEventListener('keydown', handleKeyDown);
+        } else {
+            document.removeEventListener('keydown', handleKeyDown);
+        }
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [isVisible]);
+
     const [showConfirmDelete, setConfirmDelete] = useState(false);
     const toggleConfirmDelete = () => { setConfirmDelete(!showConfirmDelete) };
 
+    const handleKeyDown = (event) => {
+        if (event.key === 'Escape') {
+            setConfirmDelete(prevState => {
+                if (!prevState) {
+                    toggleInfo();
+                } else {
+                    return !prevState;
+                }
+                return prevState;
+            });
+        }
+    };
 
     return (
         <>
