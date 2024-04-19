@@ -3,7 +3,7 @@ import Title from './Title';
 import { ExitButton} from './Button';
 import { StudentForm } from './Form';
 
-export default function NewStudentBox({ isVisible, toggleForm, addStudents }) {
+export default function NewStudentBox({ isVisible, toggleForm, addStudent }) {
     
     const handleKeyDown = (event) => {
         if (event.key === 'Escape') {
@@ -35,7 +35,7 @@ export default function NewStudentBox({ isVisible, toggleForm, addStudents }) {
                                 <ExitButton onClick={toggleForm}/>
                             </div>
 
-                            <StudentForm />
+                            <StudentForm toggleForm={toggleForm} addStudent={addStudent} />
 
                         </div>
                     </div>

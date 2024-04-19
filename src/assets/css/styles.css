@@ -810,11 +810,6 @@ video {
   border-bottom-width: 1px;
 }
 
-.border-gray-300 {
-  --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
-}
-
 .border-green-700 {
   --tw-border-opacity: 1;
   border-color: rgb(21 128 61 / var(--tw-border-opacity));
@@ -979,11 +974,6 @@ video {
 .text-gray-800 {
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
-}
-
-.text-gray-900 {
-  --tw-text-opacity: 1;
-  color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
 .text-red-500 {

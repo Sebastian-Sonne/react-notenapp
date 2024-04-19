@@ -15,7 +15,7 @@ const ErrorMessage = ({ content }) => {
     );
 }
 
-export const NameInput = ({ disabled }) => {
+export const NameInput = ({ disabled, value }) => {
     return (
         <div className="w-full md:w-1/2 px-2 mt-4 relative">
             <Label htmlFor={'name'} className={'text-gray-800'} content={'Name:'} />
@@ -23,6 +23,7 @@ export const NameInput = ({ disabled }) => {
             <input type='text'
                 name='name'
                 placeholder='Max Musterman'
+                value={value}
                 required
                 disabled={disabled}
                 className='w-full px-4 py-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none'
@@ -35,7 +36,7 @@ export const NameInput = ({ disabled }) => {
     );
 }
 
-export const IdInput = ({ disabled }) => {
+export const IdInput = ({ disabled, value }) => {
     return (
         <div className='w-full md:w-1/2 px-2 mt-4 relative'>
             <Label htmlFor={'id'} className={'text-gray-800'} content={'Schüler ID:'} />
@@ -43,6 +44,7 @@ export const IdInput = ({ disabled }) => {
             <input type='number'
                 name='id'
                 placeholder='123456'
+                value={value}
                 required
                 disabled={disabled}
                 className='w-full px-4 py-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none'
@@ -56,14 +58,15 @@ export const IdInput = ({ disabled }) => {
     );
 }
 
-export const EmailInput = ({ disabled }) => {
+export const EmailInput = ({ disabled, value }) => {
     return (
         <div className='flex flex-col relative'>
             <Label htmlFor={'email'} className={'text-gray-800'} content={'Email:'} />
 
             <input type='email'
                 name='email'
-                placeholder='max@example.com'
+                placeholder='email@example.com'
+                value={value}
                 required
                 disabled={disabled}
                 className='w-full px-4 py-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none' />

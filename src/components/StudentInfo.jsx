@@ -48,30 +48,7 @@ export const StudentInfoBox = ({ isVisible, toggleInfo, student }) => {
 
                             </div>
 
-                            <form id="student-data-form" className="flex flex-col space-y-4">
-                                
-                                <InfoForm />
-
-                                <div className="w-full">
-                                    <label htmlFor="info-grades" className="text-gray-800">Noten:</label>
-                                    <div className="w-full rounded-t-lg overflow-x-auto max-h-[400px] overflow-y-auto">
-                                        <table className="table-auto border-collapse w-full">
-                                            <thead>
-                                                <tr className="bg-gray-200 text-gray-700">
-                                                    <th className="px-4 py-2">Schriftliche Noten</th>
-                                                    <th className="px-4 py-2">Mündliche Noten</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="grade-table-body" className="text-gray-600 bg-white">
-                                                <tr className="hover:bg-gray-50 cursor-pointer">
-                                                    <td className="border px-4 py-2">-</td>
-                                                    <td className="border px-4 py-2">-</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </form>
+                            <InfoForm student={student} />
 
                             <div className="flex w-full mt-6">
 
