@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { AddGradeButton, RemoveGradeButton } from './Button';
 
 const Label = ({ htmlFor, content, className }) => {
@@ -15,7 +15,11 @@ const ErrorMessage = ({ content }) => {
     );
 }
 
-export const NameInput = ({ disabled, value }) => {
+export const NameInput = ({ disabled = false, name, setName }) => {
+    const handleNameChange = (event) => {
+        setName(event.target.value);
+    };
+
     return (
         <div className="w-full md:w-1/2 px-2 mt-4 relative">
             <Label htmlFor={'name'} className={'text-gray-800'} content={'Name:'} />
@@ -23,10 +27,13 @@ export const NameInput = ({ disabled, value }) => {
             <input type='text'
                 name='name'
                 placeholder='Max Musterman'
-                value={value}
-                required
+                value={name}
+                onChange={handleNameChange}
+                required={true}
                 disabled={disabled}
-                className='w-full px-4 py-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none'
+                className={(disabled) 
+                    ? 'w-full px-4 py-2 rounded-lg text-gray-900 border border-gray-300 bg-gray-200 focus:outline-none'
+                    : 'w-full px-4 py-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none'}
             />
 
             {!disabled && (
@@ -36,7 +43,11 @@ export const NameInput = ({ disabled, value }) => {
     );
 }
 
-export const IdInput = ({ disabled, value }) => {
+export const IdInput = ({ disabled = false, id, setId }) => {
+    const handleIdChange = (event) => {
+        setId(event.target.value);
+    };
+
     return (
         <div className='w-full md:w-1/2 px-2 mt-4 relative'>
             <Label htmlFor={'id'} className={'text-gray-800'} content={'Schüler ID:'} />
@@ -44,10 +55,13 @@ export const IdInput = ({ disabled, value }) => {
             <input type='number'
                 name='id'
                 placeholder='123456'
-                value={value}
-                required
+                value={id}
+                onChange={handleIdChange}
+                required={true}
                 disabled={disabled}
-                className='w-full px-4 py-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none'
+                className={(disabled) 
+                    ? 'w-full px-4 py-2 rounded-lg text-gray-900 border border-gray-300 bg-gray-200 focus:outline-none'
+                    : 'w-full px-4 py-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none'}
             />
 
             {!disabled && (
@@ -58,7 +72,11 @@ export const IdInput = ({ disabled, value }) => {
     );
 }
 
-export const EmailInput = ({ disabled, value }) => {
+export const EmailInput = ({ disabled = false, email, setEmail }) => {
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value);
+    };
+
     return (
         <div className='flex flex-col relative'>
             <Label htmlFor={'email'} className={'text-gray-800'} content={'Email:'} />
@@ -66,11 +84,15 @@ export const EmailInput = ({ disabled, value }) => {
             <input type='email'
                 name='email'
                 placeholder='email@example.com'
-                value={value}
-                required
+                value={email}
+                onChange={handleEmailChange}
+                required={true}
                 disabled={disabled}
-                className='w-full px-4 py-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none' />
-
+                className={(disabled) 
+                    ? 'w-full px-4 py-2 rounded-lg text-gray-900 border border-gray-300 bg-gray-200 focus:outline-none'
+                    : 'w-full px-4 py-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none'}
+            />
+                
             {!disabled && (
                 <ErrorMessage content={'Inkorrekte Schüler Email'} />
             )}
@@ -78,20 +100,18 @@ export const EmailInput = ({ disabled, value }) => {
     );
 }
 
-export const GradeInputs = () => {
+export const GradeInputs = ({ writtenGrades, setWrittenGrades, oralGrades, setOralGrades}) => {
     return (
         <>
-            <GradeInput isWritten={true} />
-            <GradeInput isWritten={false} />
+            <GradeInput grades={writtenGrades} setGrades={setWrittenGrades} isWritten={true} />
+            <GradeInput grades={oralGrades} setGrades={setOralGrades} isWritten={false} />
         </>
     );
 }
 
-const GradeInput = ({ isWritten }) => {
-    const [grades, setGrades] = useState([1]);
-
+const GradeInput = ({ isWritten, grades, setGrades }) => {
     const addGrades = () => {
-        setGrades([...grades, 1])
+        setGrades([...grades, ''])
     }
 
     const removeGrades = (index) => {
@@ -99,6 +119,12 @@ const GradeInput = ({ isWritten }) => {
         newGrades.splice(index, 1);
         setGrades(newGrades);
     }
+
+    const handleGradeChange = (index, value) => {
+        const newGrades = [...grades];
+        newGrades[index] = value;
+        setGrades(newGrades);
+    };
 
     return (
         <div className="flex flex-wrap -mx-2">
@@ -111,10 +137,12 @@ const GradeInput = ({ isWritten }) => {
                         content={isWritten ? 'Schriftliche Noten:' : 'Mündliche Noten:'}
                     />
 
-                    {grades.map((_, index) => (
+                    {grades.map((grade, index) => (
                         <input type="number"
                             key={index}
                             name={isWritten ? 'writtenGrade[]' : 'oralGrade[]'}
+                            value={grade}
+                            onChange={(e) => handleGradeChange(index, e.target.value)}
                             placeholder={index === 0 ? Math.round(Math.random() * 5) + 1 : ''}
                             className="writtenGrade w-full px-4 py-2 mb-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none"
                         />

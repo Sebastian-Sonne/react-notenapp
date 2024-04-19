@@ -1,23 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from './Button';
 import { EmailInput, GradeInputs, IdInput, NameInput } from './Input';
 
 export const StudentForm = ({ addStudent, toggleForm }) => {
 
+    const [name, setName] = useState('');
+    const [id, setId] = useState('');
+    const [email, setEmail] = useState('');
+
+    const [writtenGrades, setWrittenGrades] = useState(['']);
+    const [oralGrades, setOralGrades] = useState(['']);
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        const name = event.target.elements.name.value;
-        const id = event.target.elements.id.value;
-        const email = event.target.elements.email.value;
+        const writtenGradesData = writtenGrades.filter(value => value.trim() !== '');
+        const oralGradesData = oralGrades.filter(value => value.trim() !== '');
 
         const student = {
             'name': name,
             'id': id,
-            'email': email
+            'email': email,
+            'writtenGrades': writtenGradesData,
+            'oralGrades': oralGradesData
         };
 
-        {/* TODO HANDLE USER EXIT FORM WHILE NOT COMPLETED DATA LOSS */}
+        {/* TODO HANDLE USER EXIT FORM WHILE NOT COMPLETED DATA LOSS */ }
 
         addStudent(student);
         toggleForm();
@@ -28,13 +36,18 @@ export const StudentForm = ({ addStudent, toggleForm }) => {
 
             {/* Inputs */}
             <div className="flex flex-wrap -mx-2">
-                <NameInput />
-                <IdInput />
+                <NameInput name={name} setName={setName}/>
+                <IdInput id={id} setId={setId} />
             </div>
 
-            <EmailInput />
+            <EmailInput email={email} setEmail={setEmail} />
 
-            <GradeInputs />
+            <GradeInputs
+                writtenGrades={writtenGrades}
+                setWrittenGrades={setWrittenGrades}
+                oralGrades={oralGrades}
+                setOralGrades={setOralGrades}
+            />
 
             <br /><br />
 
@@ -51,14 +64,25 @@ export const StudentForm = ({ addStudent, toggleForm }) => {
 export const InfoForm = ({ student }) => {
     return (
         <form id="add-student-form" className="flex flex-col space-y-4">
-            {/* Name & ID */}
+
             <div className="flex flex-wrap -mx-2">
-                <NameInput value={(student.name) ? student.name : 'N/A'} disabled={true} />
-                <IdInput value={(student.id) ? student.id : 'N/A'} disabled={true} />
+
+                <NameInput
+                    name={(student.name) ? student.name : 'N/A'}
+                    disabled={true}
+                />
+
+                <IdInput
+                id={(student.id) ? student.id : 'N/A'}
+                disabled={true}
+                />
+
             </div>
 
-            {/* email */}
-            <EmailInput value={(student.email) ? student.email : 'N/A'} disabled={true} />
+            <EmailInput
+                email={(student.email) ? student.email : 'N/A'}
+                disabled={true}
+            />
 
             <div className="w-full">
                 <label htmlFor="info-grades" className="text-gray-800">Noten:</label>

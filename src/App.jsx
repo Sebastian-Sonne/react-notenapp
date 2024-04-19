@@ -43,12 +43,12 @@ export default function App() {
     const toggleInfo = () => { setShowInfo(!showInfo) };
 
     return (
-        <div className='flex bg-slate-400 justify-center min-h-screen'>
+        <div className='flex justify-center min-h-screen'>
             <div className='flex flex-col max-w-6xl w-full'>
                 <Header />
                 <SubHeader toggleForm={toggleForm} />
 
-                <TableContainer toggleInfo={toggleInfo} setStudent={setCurrentStudent} />
+                <TableContainer students={students} toggleInfo={toggleInfo} setStudent={setCurrentStudent} />
                 <Footer />
 
                 <NewStudentBox

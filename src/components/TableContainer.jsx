@@ -1,7 +1,7 @@
 import React from 'react';
 import { InfoButton } from './Button';
 
-export default function TableContainer({ toggleInfo, setStudent }) {
+export default function TableContainer({ students, toggleInfo, setStudent }) {
     return (
         <div className='w-full px-4'>
             <div className='w-full p-4 bg-gray-50 rounded-lg'>
