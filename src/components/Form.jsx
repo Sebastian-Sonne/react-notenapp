@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from './Button';
 import { EmailInput, GradeInputs, IdInput, NameInput } from './Input';
+import { calculateAverage } from "../assets/js/students";
 
 export const StudentForm = ({ addStudent, toggleForm }) => {
 
@@ -22,10 +23,9 @@ export const StudentForm = ({ addStudent, toggleForm }) => {
             'id': id,
             'email': email,
             'writtenGrades': writtenGradesData,
-            'oralGrades': oralGradesData
+            'oralGrades': oralGradesData,
+            'average': calculateAverage(oralGradesData, writtenGradesData)
         };
-
-        {/* TODO HANDLE USER EXIT FORM WHILE NOT COMPLETED DATA LOSS */ }
 
         addStudent(student);
         toggleForm();
@@ -64,7 +64,7 @@ export const StudentForm = ({ addStudent, toggleForm }) => {
 export const InfoForm = ({ student }) => {
 
     console.log(student);
-    
+
     return (
         <form id="add-student-form" className="flex flex-col space-y-4">
 

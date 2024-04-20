@@ -1,5 +1,6 @@
 import React from 'react';
 import { InfoButton } from './Button';
+import { sortStudents } from '../assets/js/students';
 
 export default function TableContainer({ students, toggleInfo, setStudent }) {
     return (
@@ -33,12 +34,15 @@ function TableHead() {
 }
 
 function TableBody({ students, toggleInfo, setStudent }) {
+
+    const sortedStudents = sortStudents(students);
+
     return (
         <tbody id="students-table-body" className="text-gray-600 bg-white">
-            {students.map((_, index) => (
+            {sortedStudents.map((_, index) => (
                 <Tr 
                     key={index}
-                    student={students[index]} 
+                    student={sortedStudents[index]} 
                     toggleInfo={toggleInfo} 
                     setStudent={setStudent}
                 />
@@ -59,7 +63,7 @@ const Tr = ({ student, toggleInfo, setStudent }) => {
             <Td content={student.id}/>
             <Td content={student.name}/>
             <Td content={student.email}/>
-            <Td content={student.avg} className={'border px-4 py-2 text-center'}/>
+            <Td content={student.average} className={'border px-4 py-2 text-center'}/>
             <Td content={<InfoButton />} className={'border-y'}/>
         </tr>
     );
