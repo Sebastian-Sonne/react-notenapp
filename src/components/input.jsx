@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { AddGradeButton, RemoveGradeButton } from './Button';
+import * as validateModule from '../assets/js/validate';
 
 const Label = ({ htmlFor, content, className }) => {
     return (
@@ -7,17 +8,24 @@ const Label = ({ htmlFor, content, className }) => {
     );
 }
 
-const ErrorMessage = ({ content }) => {
+const ErrorMessage = ({ content, isVisible = false }) => {
     return (
-        <p className="absolute top-full left-1/2 -translate-x-1/2 bg-white rounded-lg px-3 py-1 mt-1 text-red-500 z-30">
-            {content}
-        </p>
+        <>
+            {isVisible && (
+                <p className="absolute top-full left-1/2 -translate-x-1/2 bg-white shadow-md rounded-lg px-3 py-1 mt-1 text-red-500 z-30" >
+                    {content}
+                </p >
+            )}
+        </>
     );
 }
 
 export const NameInput = ({ disabled = false, name, setName }) => {
+    const [error, setError] = useState('');
+
     const handleNameChange = (event) => {
         setName(event.target.value);
+        setError(validateModule.validateName(event.target.value));
     };
 
     return (
@@ -31,21 +39,25 @@ export const NameInput = ({ disabled = false, name, setName }) => {
                 onChange={handleNameChange}
                 required={true}
                 disabled={disabled}
-                className={(disabled) 
+                className={(disabled)
                     ? 'w-full px-4 py-2 rounded-lg text-gray-900 border border-gray-300 bg-gray-200 focus:outline-none'
-                    : 'w-full px-4 py-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none'}
+                    : (error) ? 'w-full px-4 py-2 rounded-lg border border-red-500 focus:border-red-500 focus:outline-none'
+                        : 'w-full px-4 py-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none'}
             />
 
             {!disabled && (
-                <ErrorMessage content={'Inkorrekter Schülername'} />
+                <ErrorMessage content={error} isVisible={(error === '') ? false : true} />
             )}
         </div>
     );
 }
 
 export const IdInput = ({ disabled = false, id, setId }) => {
+    const [error, setError] = useState('');
+
     const handleIdChange = (event) => {
         setId(event.target.value);
+        setError(validateModule.validateId(event.target.value));
     };
 
     return (
@@ -59,22 +71,25 @@ export const IdInput = ({ disabled = false, id, setId }) => {
                 onChange={handleIdChange}
                 required={true}
                 disabled={disabled}
-                className={(disabled) 
+                className={(disabled)
                     ? 'w-full px-4 py-2 rounded-lg text-gray-900 border border-gray-300 bg-gray-200 focus:outline-none'
-                    : 'w-full px-4 py-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none'}
+                    : (error) ? 'w-full px-4 py-2 rounded-lg border border-red-500 focus:border-red-500 focus:outline-none'
+                        : 'w-full px-4 py-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none'}
             />
 
             {!disabled && (
-                <ErrorMessage content={'Inkorrekte Schüler ID.'} />
+                <ErrorMessage content={error} isVisible={(error === '') ? false : true} />
             )}
-
         </div>
     );
 }
 
 export const EmailInput = ({ disabled = false, email, setEmail }) => {
+    const [error, setError] = useState('');
+
     const handleEmailChange = (event) => {
         setEmail(event.target.value);
+        setError(validateModule.validateEmail(event.target.value));
     };
 
     return (
@@ -88,19 +103,20 @@ export const EmailInput = ({ disabled = false, email, setEmail }) => {
                 onChange={handleEmailChange}
                 required={true}
                 disabled={disabled}
-                className={(disabled) 
+                className={(disabled)
                     ? 'w-full px-4 py-2 rounded-lg text-gray-900 border border-gray-300 bg-gray-200 focus:outline-none'
-                    : 'w-full px-4 py-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none'}
+                    : (error) ? 'w-full px-4 py-2 rounded-lg border border-red-500 focus:border-red-500 focus:outline-none'
+                        : 'w-full px-4 py-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none'}
             />
-                
+
             {!disabled && (
-                <ErrorMessage content={'Inkorrekte Schüler Email'} />
+                <ErrorMessage content={error} isVisible={(error === '') ? false : true} />
             )}
         </div>
     );
 }
 
-export const GradeInputs = ({ writtenGrades, setWrittenGrades, oralGrades, setOralGrades}) => {
+export const GradeInputs = ({ writtenGrades, setWrittenGrades, oralGrades, setOralGrades }) => {
     return (
         <>
             <GradeInput grades={writtenGrades} setGrades={setWrittenGrades} isWritten={true} />
@@ -110,8 +126,16 @@ export const GradeInputs = ({ writtenGrades, setWrittenGrades, oralGrades, setOr
 }
 
 const GradeInput = ({ isWritten, grades, setGrades }) => {
+    const inputRef = useRef(null);
+
     const addGrades = () => {
-        setGrades([...grades, ''])
+        setGrades([...grades, '']);
+        //timeout to give DOM time to render the new input fully befor applying focus
+        setTimeout(() => {
+            if (inputRef.current) {
+                inputRef.current.focus();
+            }
+        }, 0);
     }
 
     const removeGrades = (index) => {
@@ -138,14 +162,17 @@ const GradeInput = ({ isWritten, grades, setGrades }) => {
                     />
 
                     {grades.map((grade, index) => (
+
                         <input type="number"
-                            key={index}
+                            ref={index === grades.length - 1  ? inputRef : null}
                             name={isWritten ? 'writtenGrade[]' : 'oralGrade[]'}
+                            key={index}
                             value={grade}
                             onChange={(e) => handleGradeChange(index, e.target.value)}
                             placeholder={index === 0 ? Math.round(Math.random() * 5) + 1 : ''}
                             className="writtenGrade w-full px-4 py-2 mb-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none"
                         />
+
                     ))}
                 </div>
             </div>
