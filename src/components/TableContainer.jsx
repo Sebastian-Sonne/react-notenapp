@@ -7,8 +7,10 @@ export default function TableContainer({ students, toggleInfo, setStudent }) {
             <div className='w-full p-4 bg-gray-50 rounded-lg'>
                 <div className="w-full rounded-t-lg overflow-x-auto">
                     <table className="table-auto border-collapse w-full">
+
                         <TableHead />
-                        <TableBody toggleInfo={toggleInfo} setStudent={setStudent} />
+                        <TableBody toggleInfo={toggleInfo} students={students} setStudent={setStudent} />
+                        
                     </table>
                 </div>
             </div>
@@ -30,18 +32,32 @@ function TableHead() {
     );
 }
 
-function TableBody({ toggleInfo, setStudent }) {
+function TableBody({ toggleInfo, students, setStudent }) {
     return (
         <tbody id="students-table-body" className="text-gray-600 bg-white">
-            <tr tabIndex="0" className="hover:bg-gray-100 cursor-pointer" onClick={toggleInfo}>
-                <td className="border px-4 py-2 whitespace-nowrap">000009</td>
-                <td className="border px-4 py-2 whitespace-nowrap">Sophia Martinez</td>
-                <td className="border px-4 py-2 whitespace-nowrap">sophia.martinez@hotmail.com</td>
-                <td className="border px-4 py-2 text-center">1,00</td>
-                <td className="border-y">
-                    <InfoButton />
-                </td>
-            </tr>
+            {students.map((_, index) => (
+                <Tr student={students[index]} toggleInfo={toggleInfo} />
+            ))}
         </tbody>
+    );
+}
+
+const Tr = ({ student, toggleInfo }) => {
+    return (
+        <tr tabIndex='0' className='hover:bg-gray-100 cursor-pointer' onClick={toggleInfo}>
+            <Td content={student.id}/>
+            <Td content={student.name}/>
+            <Td content={student.email}/>
+            <Td content={student.avg} className={'border px-4 py-2 text-center'}/>
+            <Td content={<InfoButton />} className={'border-y'}/>
+        </tr>
+    );
+}
+
+const Td = ({ className, content }) => {
+    return (
+        <td className={(className) ? className : 'border px-4 py-2 whitespace-nowrap'}>
+            {content}
+        </td>
     );
 }
