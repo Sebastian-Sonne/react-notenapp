@@ -39,14 +39,15 @@ export const NameInput = ({ disabled = false, name, setName }) => {
                 onChange={handleNameChange}
                 required={true}
                 disabled={disabled}
-                className={(disabled)
-                    ? 'w-full px-4 py-2 rounded-lg text-gray-900 border border-gray-300 bg-gray-200 focus:outline-none'
-                    : (error) ? 'w-full px-4 py-2 rounded-lg border border-red-500 focus:border-red-500 focus:outline-none'
-                        : 'w-full px-4 py-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none'}
+                className={
+                    (disabled) ? 'w-full px-4 py-2 rounded-lg text-gray-900 border border-gray-300 bg-gray-200 focus:outline-none'
+                    : (error === '') ? 'w-full px-4 py-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none'
+                    : (error === 'valid') ? 'w-full px-4 py-2 rounded-lg border border-green-600 focus:border-green-600 focus:outline-none'
+                    : 'w-full px-4 py-2 rounded-lg border border-red-500 focus:border-red-500 focus:outline-none'}
             />
 
             {!disabled && (
-                <ErrorMessage content={error} isVisible={(error === '') ? false : true} />
+                <ErrorMessage content={error} isVisible={(error === 'valid' || error === '') ? false : true} />
             )}
         </div>
     );
@@ -71,14 +72,15 @@ export const IdInput = ({ disabled = false, id, setId }) => {
                 onChange={handleIdChange}
                 required={true}
                 disabled={disabled}
-                className={(disabled)
-                    ? 'w-full px-4 py-2 rounded-lg text-gray-900 border border-gray-300 bg-gray-200 focus:outline-none'
-                    : (error) ? 'w-full px-4 py-2 rounded-lg border border-red-500 focus:border-red-500 focus:outline-none'
-                        : 'w-full px-4 py-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none'}
+                className={
+                    (disabled) ? 'w-full px-4 py-2 rounded-lg text-gray-900 border border-gray-300 bg-gray-200 focus:outline-none'
+                    : (error === '') ? 'w-full px-4 py-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none'
+                    : (error === 'valid') ? 'w-full px-4 py-2 rounded-lg border border-green-600 focus:border-green-600 focus:outline-none'
+                    : 'w-full px-4 py-2 rounded-lg border border-red-500 focus:border-red-500 focus:outline-none'}
             />
 
             {!disabled && (
-                <ErrorMessage content={error} isVisible={(error === '') ? false : true} />
+                <ErrorMessage content={error} isVisible={(error === 'valid' || error === '') ? false : true} />
             )}
         </div>
     );
@@ -103,14 +105,15 @@ export const EmailInput = ({ disabled = false, email, setEmail }) => {
                 onChange={handleEmailChange}
                 required={true}
                 disabled={disabled}
-                className={(disabled)
-                    ? 'w-full px-4 py-2 rounded-lg text-gray-900 border border-gray-300 bg-gray-200 focus:outline-none'
-                    : (error) ? 'w-full px-4 py-2 rounded-lg border border-red-500 focus:border-red-500 focus:outline-none'
-                        : 'w-full px-4 py-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none'}
+                className={
+                    (disabled) ? 'w-full px-4 py-2 rounded-lg text-gray-900 border border-gray-300 bg-gray-200 focus:outline-none'
+                    : (error === '') ? 'w-full px-4 py-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none'
+                    : (error === 'valid') ? 'w-full px-4 py-2 rounded-lg border border-green-600 focus:border-green-600 focus:outline-none'
+                    : 'w-full px-4 py-2 rounded-lg border border-red-500 focus:border-red-500 focus:outline-none'}
             />
 
             {!disabled && (
-                <ErrorMessage content={error} isVisible={(error === '') ? false : true} />
+                <ErrorMessage content={error} isVisible={(error === 'valid' || error === '') ? false : true} />
             )}
         </div>
     );

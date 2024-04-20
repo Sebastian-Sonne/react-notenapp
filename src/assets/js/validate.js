@@ -6,9 +6,9 @@
  * @returns true if valid
  */
 export const validateForm = (id, name, email) => {
-    const idEval = (validateId(id) === '') ? true : false;
-    const nameEval = (validateName(name) === '') ? true : false;
-    const emailEval = (validateEmail(email) === '') ? true : false;
+    const idEval = (validateId(id) === 'valid') ? true : false;
+    const nameEval = (validateName(name) === 'valid') ? true : false;
+    const emailEval = (validateEmail(email) === 'valid') ? true : false;
 
     return (idEval && nameEval && emailEval);
 }
@@ -20,7 +20,7 @@ export const validateName = (value) => {
     if (value.length > 40) {
         return 'Name überschreitet maximale Länge';
     }
-    return '';
+    return 'valid';
 }
 
 export const validateId = (value) => {
@@ -33,7 +33,7 @@ export const validateId = (value) => {
     if (value.length > 16) {
         return 'ID darf maximal 16 Zeichen lang sein';
     }
-    return '';
+    return 'valid';
 }
 
 export const validateEmail = (value) => {
@@ -43,7 +43,7 @@ export const validateEmail = (value) => {
     if (!validateEmailPattern(value)) {
         return 'Ungültige E-Mail';
     }
-    return '';
+    return 'valid';
 }
 
 /**
