@@ -16,11 +16,12 @@ export default function App() {
         setStudents(storageModule.loadData('students'));
     }
 
+    const deleteStudent = () => {
+        storageModule.deleteStudent(currentStudent);
+        setStudents(storageModule.loadData('students'));
+    }
+
     const [currentStudent, setCurrentStudent] = useState(null);
-    const openStudent = (student) => {
-        setCurrentStudent(student);
-        toggleInfo();
-    };
 
     const [showForm, setShowForm] = useState(false);
     const toggleForm = () => { setShowForm(!showForm) };
@@ -40,13 +41,15 @@ export default function App() {
                 <NewStudentBox
                     isVisible={showForm}
                     toggleForm={toggleForm}
-                    addStudent={addStudent} />
+                    addStudent={addStudent}
+                />
 
                 <StudentInfoBox
                     isVisible={showInfo}
                     toggleInfo={toggleInfo}
-                    student={currentStudent} />
-
+                    student={currentStudent}
+                    deleteStudent={deleteStudent}
+                />
             </div>
         </div>
     );

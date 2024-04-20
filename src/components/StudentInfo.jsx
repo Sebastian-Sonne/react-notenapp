@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Title from './Title';
 import Button, { ExitButton } from './Button';
-import ConfirmDeleteBox from "./confirmDelete";
+import ConfirmDeleteBox from "./ConfirmDelete";
 import { InfoForm } from './Form';
 
-export const StudentInfoBox = ({ isVisible, toggleInfo, student }) => {
+export const StudentInfoBox = ({ isVisible, toggleInfo, student, deleteStudent }) => {
 
     useEffect(() => {
         if (isVisible) {
@@ -19,6 +19,12 @@ export const StudentInfoBox = ({ isVisible, toggleInfo, student }) => {
 
     const [showConfirmDelete, setConfirmDelete] = useState(false);
     const toggleConfirmDelete = () => { setConfirmDelete(!showConfirmDelete) };
+
+    const handleDelete = () => {
+        deleteStudent();
+        toggleConfirmDelete();
+        toggleInfo();
+    }
 
     const handleKeyDown = (event) => {
         if (event.key === 'Escape') {
@@ -64,7 +70,9 @@ export const StudentInfoBox = ({ isVisible, toggleInfo, student }) => {
 
                     <ConfirmDeleteBox
                         isVisible={showConfirmDelete}
-                        toggleBox={toggleConfirmDelete} />
+                        toggleBox={toggleConfirmDelete}
+                        handleDelete={handleDelete}
+                    />
                 </section>
             )}
         </>
