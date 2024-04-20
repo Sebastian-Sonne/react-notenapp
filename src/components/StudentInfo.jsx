@@ -5,6 +5,7 @@ import ConfirmDeleteBox from "./confirmDelete";
 import { InfoForm } from './Form';
 
 export const StudentInfoBox = ({ isVisible, toggleInfo, student }) => {
+    console.log(student);
 
     useEffect(() => {
         if (isVisible) {

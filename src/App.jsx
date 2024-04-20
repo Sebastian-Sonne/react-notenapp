@@ -9,24 +9,6 @@ import Footer from './components/Footer';
 import NewStudentBox from './components/NewStudentBox';
 import StudentInfoBox from './components/StudentInfo';
 
-const student = {
-    "id": "000001",
-    "name": "Sophie Miller",
-    "email": "sophie.miller@gmail.com",
-    "writtenGrades": [
-        "1",
-        "2",
-        "3",
-        "1"
-    ],
-    "oralGrades": [
-        "2",
-        "1",
-        "1"
-    ],
-    "average": 1.64
-};
-
 export default function App() {
     const [students, setStudents] = useState(storageModule.loadData('students'));
     const addStudent = (student) => {
@@ -34,7 +16,11 @@ export default function App() {
         setStudents(storageModule.loadData('students'));
     }
 
-    const [currentStudent, setCurrentStudent] = useState('');
+    const [currentStudent, setCurrentStudent] = useState(null);
+    const openStudent = (student) => {
+        setCurrentStudent(student);
+        toggleInfo();
+    };
 
     const [showForm, setShowForm] = useState(false);
     const toggleForm = () => { setShowForm(!showForm) };
@@ -59,7 +45,7 @@ export default function App() {
                 <StudentInfoBox
                     isVisible={showInfo}
                     toggleInfo={toggleInfo}
-                    student={student} />
+                    student={currentStudent} />
 
             </div>
         </div>

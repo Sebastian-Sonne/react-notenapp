@@ -62,6 +62,9 @@ export const StudentForm = ({ addStudent, toggleForm }) => {
 
 
 export const InfoForm = ({ student }) => {
+
+    console.log(student);
+    
     return (
         <form id="add-student-form" className="flex flex-col space-y-4">
 

@@ -9,8 +9,8 @@ export default function TableContainer({ students, toggleInfo, setStudent }) {
                     <table className="table-auto border-collapse w-full">
 
                         <TableHead />
-                        <TableBody toggleInfo={toggleInfo} students={students} setStudent={setStudent} />
-                        
+                        <TableBody students={students} toggleInfo={toggleInfo} setStudent={setStudent} />
+
                     </table>
                 </div>
             </div>
@@ -32,19 +32,30 @@ function TableHead() {
     );
 }
 
-function TableBody({ toggleInfo, students, setStudent }) {
+function TableBody({ students, toggleInfo, setStudent }) {
     return (
         <tbody id="students-table-body" className="text-gray-600 bg-white">
             {students.map((_, index) => (
-                <Tr student={students[index]} toggleInfo={toggleInfo} />
+                <Tr 
+                    key={index}
+                    student={students[index]} 
+                    toggleInfo={toggleInfo} 
+                    setStudent={setStudent}
+                />
             ))}
         </tbody>
     );
 }
 
-const Tr = ({ student, toggleInfo }) => {
+const Tr = ({ student, toggleInfo, setStudent }) => {
+
+    const handleClick = () => {
+        setStudent(student);
+        toggleInfo();
+    }
+
     return (
-        <tr tabIndex='0' className='hover:bg-gray-100 cursor-pointer' onClick={toggleInfo}>
+        <tr tabIndex='0' className='hover:bg-gray-100 cursor-pointer' onClick={handleClick}>
             <Td content={student.id}/>
             <Td content={student.name}/>
             <Td content={student.email}/>
