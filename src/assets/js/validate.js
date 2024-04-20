@@ -1,3 +1,17 @@
+/**
+ * function to validate a from based on their inputs
+ * @param {*} id id
+ * @param {*} name name
+ * @param {*} email email
+ * @returns true if valid
+ */
+export const validateForm = (id, name, email) => {
+    const idEval = (validateId(id) === '') ? true : false;
+    const nameEval = (validateName(name) === '') ? true : false;
+    const emailEval = (validateEmail(email) === '') ? true : false;
+
+    return (idEval && nameEval && emailEval);
+}
 
 export const validateName = (value) => {
     if (value.length <= 0) {

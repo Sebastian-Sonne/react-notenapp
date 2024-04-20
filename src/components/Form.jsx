@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from './Button';
 import { EmailInput, GradeInputs, IdInput, NameInput } from './Input';
 import { calculateAverage } from "../assets/js/students";
+import { validateForm } from "../assets/js/validate";
 
 export const StudentForm = ({ addStudent, toggleForm }) => {
 
@@ -14,6 +15,8 @@ export const StudentForm = ({ addStudent, toggleForm }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
+        if (!validateForm(id, name, email)) return;
 
         const writtenGradesData = writtenGrades.filter(value => value.trim() !== '');
         const oralGradesData = oralGrades.filter(value => value.trim() !== '');
@@ -62,8 +65,6 @@ export const StudentForm = ({ addStudent, toggleForm }) => {
 
 
 export const InfoForm = ({ student }) => {
-
-    console.log(student);
 
     return (
         <form id="add-student-form" className="flex flex-col space-y-4">
