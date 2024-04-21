@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Title from './Title';
+import { Title } from './Components';
 import { ExitButton} from './Button';
 import { StudentForm } from './Form';
 

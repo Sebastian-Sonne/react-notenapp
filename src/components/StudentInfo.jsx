@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Title from './Title';
+import { Title } from './Components';
 import Button, { ExitButton } from './Button';
 import ConfirmDeleteBox from "./ConfirmDelete";
 import { InfoForm } from './Form';

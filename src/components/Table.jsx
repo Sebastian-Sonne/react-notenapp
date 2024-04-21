@@ -3,35 +3,10 @@ import { InfoButton } from './Button';
 import { sortStudents } from '../assets/js/students';
 
 /**
- * Table Container react component
- * @param {*} students array of all students who are displayed
- * @param {*} toggleInfo function to toggle visibility of student info box
- * @param {*} setStudent function to set the current student
- * @returns Table Container JSX component
- */
-export const TableContainer = ({ students, toggleInfo, setStudent }) => {
-    return (
-        <div className='w-full px-4'>
-            <div className='w-full p-4 bg-gray-50 rounded-lg'>
-                <div className="w-full rounded-t-lg overflow-x-auto">
-                    <table className="table-auto border-collapse w-full">
-
-                        <TableHead />
-                        <TableBody students={students} toggleInfo={toggleInfo} setStudent={setStudent} />
-
-                    </table>
-                </div>
-            </div>
-        </div>
-    );
-}
-export default TableContainer
-
-/**
  * Table Head react component
  * @returns Table Head JSX component
  */
-const TableHead = () => {
+export const TableHead = () => {
     return (
         <thead>
             <tr className="bg-gray-200 text-gray-700">
@@ -52,7 +27,7 @@ const TableHead = () => {
  * @param {*} setStudent function to set the current student
  * @returns Table Body JSX component
  */
-const TableBody = ({ students, toggleInfo, setStudent }) => {
+export const TableBody = ({ students, toggleInfo, setStudent }) => {
 
     const sortedStudents = sortStudents(students);
 

@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import * as storageModule from './assets/js/storage.js';
 
-import Header from './components/Header';
-import SubHeader from './components/SubHeader';
-import TableContainer from './components/TableContainer';
-import Footer from './components/Footer';
+import { Header, SubHeader, TableContainer, Footer } from './components/Components.jsx';
 
 import NewStudentBox from './components/NewStudentBox';
 import StudentInfoBox from './components/StudentInfo';
