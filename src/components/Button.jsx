@@ -1,11 +1,24 @@
 import React from 'react';
 
+/**
+ * Button React Component
+ * @param {*} content content of button
+ * @param {*} onClick onclick action of button
+ * @param {*} className classes of button
+ * @param {*} type type of button
+ * @returns button JSX component
+ */
 export default function Button({ content, onClick, className, type }) {
     return (
         <button onClick={onClick} className={className} type={type}> {content} </button>
     );
 }
 
+/**
+ * Exit Button react component
+ * @param {*} onClick onclick action of button
+ * @returns button JSX component
+ */
 export function ExitButton({ onClick }) {
     return (
         <Button onClick={onClick} type={'button'}
@@ -20,6 +33,11 @@ export function ExitButton({ onClick }) {
     );
 }
 
+/**
+ * Info Button react component
+ * @param {*} onClick onclick action of button
+ * @returns button JSX component
+ */
 export function InfoButton({ onClick }) {
     return (
         <Button content={'Info'} type={'button'} onClick={onClick}
@@ -27,6 +45,11 @@ export function InfoButton({ onClick }) {
     );
 }
 
+/**
+ * Add Grade Button react component
+ * @param {*} onClick onclick action of button
+ * @returns button JSX component
+ */
 export const AddGradeButton = ({ onClick }) => {
     return (
         <Button
@@ -44,6 +67,11 @@ export const AddGradeButton = ({ onClick }) => {
     );
 }
 
+/**
+ * Remove Grade Button react component
+ * @param {*} onClick onclick action of button
+ * @returns button JSX component
+ */
 export const RemoveGradeButton = ({ onClick }) => {
     return (
         <Button
