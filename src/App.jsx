@@ -9,7 +9,11 @@ import Footer from './components/Footer';
 import NewStudentBox from './components/NewStudentBox';
 import StudentInfoBox from './components/StudentInfo';
 
-export default function App() {
+/**
+ * App (main) react component
+ * @returns App (main) JSX component
+ */
+export const App = () => {
     const [students, setStudents] = useState(storageModule.loadData('students'));
     const addStudent = (student) => {
         storageModule.saveStudent(student);
@@ -54,3 +58,5 @@ export default function App() {
         </div>
     );
 }
+
+export default App

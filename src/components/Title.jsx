@@ -1,6 +1,12 @@
 import React from 'react';
 
-export default function Title({ title, className}) {
+/**
+ * Title react component
+ * @param {*} title content of header
+ * @param {*} className classNames of header component
+ * @returns Title JSX component
+ */
+export const Title = ({ title, className}) => {
     return (
         <>
             <h1 className={className}>
@@ -9,3 +15,5 @@ export default function Title({ title, className}) {
         </>
     );
 }
+
+export default Title

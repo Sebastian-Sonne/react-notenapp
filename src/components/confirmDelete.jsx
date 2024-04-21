@@ -2,6 +2,13 @@ import React from "react";
 import Title from "./Title";
 import Button from "./Button";
 
+/**
+ * Confirm Delete Box react component
+ * @param {boolean} isVisible true if set visible
+ * @param {*} toggleBox function to toggle visibility of delete box
+ * @param {*} handleDelete function to handle student deletion
+ * @returns deleteBox JSX component
+ */
 export const ConfirmDeleteBox = ({ isVisible, toggleBox, handleDelete }) => {
     return (
         <>
@@ -22,6 +29,12 @@ export const ConfirmDeleteBox = ({ isVisible, toggleBox, handleDelete }) => {
     );
 }
 
+/**
+ * Confirm Delete Box content react component
+ * @param {*} toggleBox function to toggle visibility of delete box
+ * @param {*} handleDelete function to handle student deletion
+ * @returns deleteBox content JSX component
+ */
 const ConfirmDeleteContent = ({ toggleBox, handleDelete }) => {
 
     return (

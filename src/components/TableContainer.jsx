@@ -2,7 +2,14 @@ import React from 'react';
 import { InfoButton } from './Button';
 import { sortStudents } from '../assets/js/students';
 
-export default function TableContainer({ students, toggleInfo, setStudent }) {
+/**
+ * Table Container react component
+ * @param {*} students array of all students who are displayed
+ * @param {*} toggleInfo function to toggle visibility of student info box
+ * @param {*} setStudent function to set the current student
+ * @returns Table Container JSX component
+ */
+export const TableContainer = ({ students, toggleInfo, setStudent }) => {
     return (
         <div className='w-full px-4'>
             <div className='w-full p-4 bg-gray-50 rounded-lg'>
@@ -18,8 +25,13 @@ export default function TableContainer({ students, toggleInfo, setStudent }) {
         </div>
     );
 }
+export default TableContainer
 
-function TableHead() {
+/**
+ * Table Head react component
+ * @returns Table Head JSX component
+ */
+const TableHead = () => {
     return (
         <thead>
             <tr className="bg-gray-200 text-gray-700">
@@ -33,7 +45,14 @@ function TableHead() {
     );
 }
 
-function TableBody({ students, toggleInfo, setStudent }) {
+/**
+ * Table Body react component
+ * @param {*} students array of all students who are displayed
+ * @param {*} toggleInfo function to toggle visibility of student info box
+ * @param {*} setStudent function to set the current student
+ * @returns Table Body JSX component
+ */
+const TableBody = ({ students, toggleInfo, setStudent }) => {
 
     const sortedStudents = sortStudents(students);
 
@@ -51,6 +70,13 @@ function TableBody({ students, toggleInfo, setStudent }) {
     );
 }
 
+/**
+ * Table Row react component
+ * @param {*} students array of all students who are displayed
+ * @param {*} toggleInfo function to toggle visibility of student info box
+ * @param {*} setStudent function to set the current student
+ * @returns Table Row JSX component
+ */
 const Tr = ({ student, toggleInfo, setStudent }) => {
 
     const handleClick = () => {
@@ -69,6 +95,12 @@ const Tr = ({ student, toggleInfo, setStudent }) => {
     );
 }
 
+/**
+ * Table Cell react component
+ * @param {*} className className of component
+ * @param {*} content content of component
+ * @returns Table Cell JSX component
+ */
 const Td = ({ className, content }) => {
     return (
         <td className={(className) ? className : 'border px-4 py-2 whitespace-nowrap'}>

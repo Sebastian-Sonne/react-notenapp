@@ -1,5 +1,9 @@
 import React from 'react';
 
+/**
+ * Footer react component
+ * @returns footer JSX component
+ */
 export default function Footer() {
     return (
         <div className='flex justify-center align-middle w-full h-6 my-2'>

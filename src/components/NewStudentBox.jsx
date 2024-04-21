@@ -3,8 +3,19 @@ import Title from './Title';
 import { ExitButton} from './Button';
 import { StudentForm } from './Form';
 
-export default function NewStudentBox({ isVisible, toggleForm, addStudent }) {
+/**
+ * New student box react component
+ * @param {*} isVisible true if set visible
+ * @param {*} toggleForm function to toggle visibility
+ * @param {*} addStudent function to add student to students
+ * @returns New student box field JSX component
+ */
+export const NewStudentBox = ({ isVisible, toggleForm, addStudent }) => {
     
+    /**
+     * function to handle keydown events
+     * @param {*} event keydown event
+     */
     const handleKeyDown = (event) => {
         if (event.key === 'Escape') {
             toggleForm();
@@ -44,3 +55,5 @@ export default function NewStudentBox({ isVisible, toggleForm, addStudent }) {
         </>
     );
 }
+
+export default NewStudentBox

@@ -4,6 +4,14 @@ import Button, { ExitButton } from './Button';
 import ConfirmDeleteBox from "./ConfirmDelete";
 import { InfoForm } from './Form';
 
+/**
+ * Student info box react component
+ * @param {*} isVisible true if set visible
+ * @param {*} toggleForm function to toggle visibility
+ * @param {*} student student whose data is displayed
+ * @param {*} deleteStudent function to delete student to students
+ * @returns student info box field JSX component
+ */
 export const StudentInfoBox = ({ isVisible, toggleInfo, student, deleteStudent }) => {
 
     useEffect(() => {
@@ -20,12 +28,19 @@ export const StudentInfoBox = ({ isVisible, toggleInfo, student, deleteStudent }
     const [showConfirmDelete, setConfirmDelete] = useState(false);
     const toggleConfirmDelete = () => { setConfirmDelete(!showConfirmDelete) };
 
+    /**
+     * function to handle deletion of a student
+     */
     const handleDelete = () => {
         deleteStudent();
         toggleConfirmDelete();
         toggleInfo();
     }
 
+    /**
+     * function to handle keydown events
+     * @param {*} event keydown event
+     */
     const handleKeyDown = (event) => {
         if (event.key === 'Escape') {
             setConfirmDelete(prevState => {

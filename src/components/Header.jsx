@@ -2,7 +2,11 @@ import React from 'react';
 import Title from './Title'
 import notenappSVG from '../assets/media/notenapp.svg';
 
-export default function Header() {
+/**
+ * Header react component
+ * @returns Header JSX component
+ */
+export const Header = () => {
     return (
         <div className="flex justify-between max-w-6xl h-16 w-full mt-2 mb-4">
             <div className='flex'>
@@ -14,8 +18,13 @@ export default function Header() {
         </div>
     );
 }
+export default Header
 
-function Logo() {
+/**
+ * Logo react component
+ * @returns Logo JSX component
+ */
+const Logo = () => {
     return (
         <a className="aspect-square w-12 py-2 mx-4" href="/" tabIndex="1">
             <img src={notenappSVG} alt="NotenappLogo" />
@@ -23,7 +32,11 @@ function Logo() {
     );
 }
 
-function UserIcon() {
+/**
+ * UserIcon react component
+ * @returns UserIcon JSX component
+ */
+const UserIcon = () => {
     return (
         <div className="flex justify-center aspect-square w-12 mx-4">
             <div className="w-full aspect-square my-auto rounded-full bg-gray-300 cursor-pointer"></div>

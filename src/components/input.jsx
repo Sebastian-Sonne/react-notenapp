@@ -20,9 +20,20 @@ const ErrorMessage = ({ content, isVisible = false }) => {
     );
 }
 
+/**
+ * Name input field react component
+ * @param {*} disabled true if input field disabled
+ * @param {*} name value of input field
+ * @param {*} setName function to set name (useState together with name in parent component)
+ * @returns Name input field JSX component
+ */
 export const NameInput = ({ disabled = false, name, setName }) => {
     const [error, setError] = useState('');
 
+    /**
+     * function to handle Name change
+     * @param {*} event onChange event
+     */
     const handleNameChange = (event) => {
         setName(event.target.value);
         setError(validateModule.validateName(event.target.value));
@@ -53,9 +64,20 @@ export const NameInput = ({ disabled = false, name, setName }) => {
     );
 }
 
+/**
+ * Id input field react component
+ * @param {*} disabled true if input field disabled
+ * @param {*} id value of input field
+ * @param {*} setName function to set id (useState together with id in parent component)
+ * @returns Id input field JSX component
+ */
 export const IdInput = ({ disabled = false, id, setId }) => {
     const [error, setError] = useState('');
 
+     /**
+     * function to handle Id change
+     * @param {*} event onChange event
+     */
     const handleIdChange = (event) => {
         setId(event.target.value);
         setError(validateModule.validateId(event.target.value));
@@ -86,9 +108,20 @@ export const IdInput = ({ disabled = false, id, setId }) => {
     );
 }
 
+/**
+ * Email input field react component
+ * @param {*} disabled true if input field disabled
+ * @param {*} email value of input field
+ * @param {*} setName function to set email (useState together with email in parent component)
+ * @returns Email input field JSX component
+ */
 export const EmailInput = ({ disabled = false, email, setEmail }) => {
     const [error, setError] = useState('');
 
+     /**
+     * function to handle Email change
+     * @param {*} event onChange event
+     */
     const handleEmailChange = (event) => {
         setEmail(event.target.value);
         setError(validateModule.validateEmail(event.target.value));
@@ -119,6 +152,14 @@ export const EmailInput = ({ disabled = false, email, setEmail }) => {
     );
 }
 
+/**
+ * Written and Oral grade input field react component
+ * @param {*} writtenGrades array of written grades
+ * @param {*} setWrittenGrades function to set written grades (useState together with writtenGrades in parent component)
+ * @param {*} oralGrades array of oral grades
+ * @param {*} setOralGrades function to set oral grades (useState together with oralGrades in parent component)
+ * @returns Written and Oral grade input field JSX component
+ */
 export const GradeInputs = ({ writtenGrades, setWrittenGrades, oralGrades, setOralGrades }) => {
     return (
         <>
@@ -128,6 +169,13 @@ export const GradeInputs = ({ writtenGrades, setWrittenGrades, oralGrades, setOr
     );
 }
 
+/**
+ * Grade input field react component
+ * @param {*} isWritten true if component is for written grades
+ * @param {*} grades array of grades
+ * @param {*} setGrades function to set grades (useState together with grades in parent component)
+ * @returns Grade input field JSX component
+ */
 const GradeInput = ({ isWritten, grades, setGrades }) => {
     const inputRef = useRef(null);
 

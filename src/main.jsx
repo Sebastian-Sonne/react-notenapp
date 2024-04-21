@@ -4,6 +4,10 @@ import App from './App';
 import './assets/css/styles.css';
 import './assets/css/custom.css'; 
 
+/**
+ * Main react component, starts App
+ * @returns Main JSX component
+ */
 function Main() {
     return (
         <React.StrictMode>

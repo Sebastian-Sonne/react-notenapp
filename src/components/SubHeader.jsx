@@ -2,7 +2,12 @@ import React from 'react';
 import Title from './Title';
 import Button from './Button';
 
-export default function SubHeader({ toggleForm }) {
+/**
+ * Sub Header react component
+ * @param {*} toggleForm function to toggle visibility of new Student form (box)
+ * @returns Sub Header field JSX component
+ */
+export const SubHeader = ({ toggleForm }) => {
     return (
         <div className="flex max-w-6xl w-full px-4 mb-4 justify-between align-middle h-10">
             <Title title={'Übersicht Schüler'} className={'h-10 pt-2 text-gray-700 text-2xl font-semibold'} />
@@ -16,3 +21,5 @@ export default function SubHeader({ toggleForm }) {
         </div>
     );
 }
+
+export default SubHeader
