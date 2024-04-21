@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as storageModule from './assets/js/storage.js';
 
-import { Header, SubHeader, TableContainer, Footer, NewStudentBox, StudentInfoBox } from './components/Components.jsx';
+import * as Components from './components/Components.jsx';
 
 /**
  * App (main) react component
@@ -30,24 +30,27 @@ export const App = () => {
     return (
         <div className='flex justify-center min-h-screen'>
             <div className='flex flex-col max-w-6xl w-full'>
-                <Header />
-                <SubHeader toggleForm={toggleForm} />
+                <Components.Header />
+                <Components.SubHeader
+                    toggleForm={toggleForm} />
 
-                <TableContainer students={students} toggleInfo={toggleInfo} setStudent={setCurrentStudent} />
-                <Footer />
+                <Components.TableContainer
+                    students={students}
+                    toggleInfo={toggleInfo}
+                    setStudent={setCurrentStudent} />
 
-                <NewStudentBox
+                <Components.Footer />
+
+                <Components.NewStudentBox
                     isVisible={showForm}
                     toggleForm={toggleForm}
-                    addStudent={addStudent}
-                />
+                    addStudent={addStudent} />
 
-                <StudentInfoBox
+                <Components.StudentInfoBox
                     isVisible={showInfo}
                     toggleInfo={toggleInfo}
                     student={currentStudent}
-                    deleteStudent={deleteStudent}
-                />
+                    deleteStudent={deleteStudent} />
             </div>
         </div>
     );
