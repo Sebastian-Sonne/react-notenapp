@@ -4,6 +4,12 @@ import { EmailInput, GradeInputs, IdInput, NameInput } from './Input';
 import { calculateAverage } from "../assets/js/students";
 import { validateForm } from "../assets/js/validate";
 
+/**
+ * New StudentForm React Component
+ * @param {*} addStudent onSubmit function to add student to students
+ * @param {*} toggleForm function to toggle visibility of form
+ * @returns jsx component
+ */
 export const StudentForm = ({ addStudent, toggleForm }) => {
 
     const [name, setName] = useState('');
@@ -39,7 +45,7 @@ export const StudentForm = ({ addStudent, toggleForm }) => {
 
             {/* Inputs */}
             <div className="flex flex-wrap -mx-2">
-                <NameInput name={name} setName={setName}/>
+                <NameInput name={name} setName={setName} />
                 <IdInput id={id} setId={setId} />
             </div>
 
@@ -63,8 +69,18 @@ export const StudentForm = ({ addStudent, toggleForm }) => {
     );
 };
 
-
+/**
+ * Student InfoForm React Component
+ * @param {*} param0 student whos data is shown
+ * @returns jsx component
+ */
 export const InfoForm = ({ student }) => {
+    const maxLength = Math.max(student.writtenGrades.length, student.oralGrades.length);
+
+    const rows = [];
+    for (var i = 0; i < maxLength; i++) {
+        rows.push(generateTr(i, student.writtenGrades, student.oralGrades));
+    }
 
     return (
         <form id="add-student-form" className="flex flex-col space-y-4">
@@ -77,8 +93,8 @@ export const InfoForm = ({ student }) => {
                 />
 
                 <IdInput
-                id={(student.id) ? student.id : 'N/A'}
-                disabled={true}
+                    id={(student.id) ? student.id : 'N/A'}
+                    disabled={true}
                 />
 
             </div>
@@ -99,14 +115,32 @@ export const InfoForm = ({ student }) => {
                             </tr>
                         </thead>
                         <tbody id="grade-table-body" className="text-gray-600 bg-white">
-                            <tr className="hover:bg-gray-50 cursor-pointer">
-                                <td className="border px-4 py-2">-</td>
-                                <td className="border px-4 py-2">-</td>
-                            </tr>
+
+                            {rows}
+
                         </tbody>
                     </table>
                 </div>
             </div>
         </form>
+    );
+}
+
+/**
+ * function to generate a tr html element for student grades
+ * @param {*} index index of grade in array
+ * @param {*} writtenGrades writtengrades array
+ * @param {*} oralGrades oralgrades array
+ * @returns tr element
+ */
+const generateTr = (index, writtenGrades, oralGrades) => {
+    const writtenGrade = index < writtenGrades.length ? writtenGrades[index] : '-';
+    const oralGrade = index < oralGrades.length ? oralGrades[index] : '-';
+
+    return (
+        <tr key={index}>
+            <td className="border px-4 py-2">{writtenGrade}</td>
+            <td className="border px-4 py-2">{oralGrade}</td>
+        </tr>
     );
 }
