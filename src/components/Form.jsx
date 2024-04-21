@@ -19,6 +19,10 @@ export const StudentForm = ({ addStudent, toggleForm }) => {
     const [writtenGrades, setWrittenGrades] = useState(['']);
     const [oralGrades, setOralGrades] = useState(['']);
 
+    /**
+     * function to hadle formSubmit
+     * @param {*} event submit event
+     */
     const handleSubmit = (event) => {
         event.preventDefault();
 
