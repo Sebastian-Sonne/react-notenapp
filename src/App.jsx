@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as storageModule from './assets/js/storage.js';
 import * as Components from './components/Components.jsx';
 
@@ -26,8 +26,23 @@ export const App = () => {
     const [showInfo, setShowInfo] = useState(false);
     const toggleInfo = () => { setShowInfo(!showInfo) };
 
+    /**
+     * handle body overflow 
+     */
+    useEffect(() => {
+        if (showForm || showInfo) {
+            document.body.classList.add('overflow-hidden');
+        } else {
+            document.body.classList.remove('overflow-hidden');
+        }
+    
+        return () => {
+            document.body.classList.remove('overflow-hidden');
+        };
+    }, [showForm, showInfo]);
+
     return (
-        <div className='flex justify-center min-h-screen'>
+        <div className={'flex justify-center min-h-screen'}>
             <div className='flex flex-col max-w-6xl w-full'>
                 <Components.Header />
                 <Components.SubHeader
