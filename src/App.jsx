@@ -1,21 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import * as storageModule from './assets/js/storage.js';
 import * as Components from './components/Components.jsx';
+import * as Notify from './components/Notification.jsx';
 
 /**
  * App (main) react component
  * @returns App (main) JSX component
  */
 export const App = () => {
+
+    if (typeof (Storage) === undefined) return <Notify.NoLocalStorage />;
+
     const [students, setStudents] = useState(storageModule.loadData('students'));
     const addStudent = (student) => {
         storageModule.saveStudent(student);
         setStudents(storageModule.loadData('students'));
+        setNotification('Schüler Erfolgreich Hinzugefügt');
     }
 
     const deleteStudent = () => {
         storageModule.deleteStudent(currentStudent);
         setStudents(storageModule.loadData('students'));
+        setNotification('Schüler Erfolgreich Gelöscht');
     }
 
     const [currentStudent, setCurrentStudent] = useState(null);
@@ -26,6 +32,9 @@ export const App = () => {
     const [showInfo, setShowInfo] = useState(false);
     const toggleInfo = () => { setShowInfo(!showInfo) };
 
+    //setNofitication('') to hide component
+    const [notification, setNotification] = useState('');
+
     /**
      * handle body overflow 
      */
@@ -35,7 +44,7 @@ export const App = () => {
         } else {
             document.body.classList.remove('overflow-hidden');
         }
-    
+
         return () => {
             document.body.classList.remove('overflow-hidden');
         };
@@ -45,6 +54,11 @@ export const App = () => {
         <div className={'flex justify-center min-h-screen'}>
             <div className='flex flex-col max-w-6xl w-full'>
                 <Components.Header />
+
+                <Notify.Notification
+                    notification={notification}
+                    setNotification={setNotification} />
+
                 <Components.SubHeader
                     toggleForm={toggleForm} />
 

@@ -86,6 +86,13 @@ export const TableContainer = ({ students, toggleInfo, setStudent }) => {
 
                     </table>
                 </div>
+
+                {students.length === 0 && (
+                    <div className="flex-col align-middle w-full">
+                        <h2 className="font-bold text-3xl text-center text-gray-800">Keine Schüler Gefunden</h2>
+                        <p className="text-center text-lg text-gray-700">Füge einen neuen Schüler hinzu!</p>
+                    </div>
+                )}
             </div>
         </div>
     );
@@ -98,7 +105,7 @@ export const TableContainer = ({ students, toggleInfo, setStudent }) => {
 export const Footer = () => {
     return (
         <div className='flex justify-center align-middle w-full h-6 my-2'>
-            <p className="text-gray-500 font-normal">&copy; 2024 
+            <p className="text-gray-500 font-normal">&copy; 2024
                 <a href="https://github.com/sebastian-sonne" className="text-slate-600 hover:text-notenapp-blue transition-colors" target="_blank"> Sebastian Sonne</a>
             </p>
         </div>
@@ -113,7 +120,7 @@ export const Footer = () => {
  * @returns New student box field JSX component
  */
 export const NewStudentBox = ({ isVisible, toggleForm, addStudent }) => {
-    
+
     /**
      * function to handle keydown events
      * @param {*} event keydown event
@@ -145,7 +152,7 @@ export const NewStudentBox = ({ isVisible, toggleForm, addStudent }) => {
 
                             <div className="flex justify-between">
                                 <Title title={'Schüler Hinzufügen'} className={'text-2xl font-semibold text-gray-800'} />
-                                <ExitButton onClick={toggleForm}/>
+                                <ExitButton onClick={toggleForm} />
                             </div>
 
                             <StudentForm toggleForm={toggleForm} addStudent={addStudent} />
@@ -255,7 +262,7 @@ export const StudentInfoBox = ({ isVisible, toggleInfo, student, deleteStudent }
  * @param {*} className classNames of header component
  * @returns Title JSX component
  */
-export const Title = ({ title, className}) => {
+export const Title = ({ title, className }) => {
     return (
         <>
             <h1 className={className}>

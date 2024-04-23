@@ -61,11 +61,11 @@ const Tr = ({ student, toggleInfo, setStudent }) => {
 
     return (
         <tr tabIndex='0' className='hover:bg-gray-100 cursor-pointer' onClick={handleClick}>
-            <Td content={student.id}/>
-            <Td content={student.name}/>
-            <Td content={student.email}/>
-            <Td content={student.average} className={'border px-4 py-2 text-center'}/>
-            <Td content={<InfoButton />} className={'border-y'}/>
+            <Td content={student.id} />
+            <Td content={student.name} />
+            <Td content={student.email} />
+            <Td content={student.average} className={'border px-4 py-2 text-center'} />
+            <Td content={<InfoButton />} className={'border-y'} />
         </tr>
     );
 }
