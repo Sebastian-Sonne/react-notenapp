@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Button React Component
@@ -8,18 +9,27 @@ import React from 'react';
  * @param {*} type type of button
  * @returns button JSX component
  */
-export default function Button({ content, onClick, className, type }) {
+export const Button = ({ content, onClick, className, type }) => {
     return (
         <button onClick={onClick} className={className} type={type}> {content} </button>
     );
 }
+Button.propTypes = {
+    content: PropTypes.string,
+    onClick: PropTypes.func,
+    className: PropTypes.string,
+    type: PropTypes.oneOf(['button', 'submit', 'reset'])
+}
+
+export default Button
+
 
 /**
  * Exit Button react component
  * @param {*} onClick onclick action of button
  * @returns button JSX component
  */
-export function ExitButton({ onClick }) {
+export const ExitButton = ({ onClick }) => {
     return (
         <Button onClick={onClick} type={'button'}
             className={'flex items-center justify-center px-4 py-2 rounded-lg text-white hover:bg-red-600 transition-all'}
@@ -32,18 +42,26 @@ export function ExitButton({ onClick }) {
         />
     );
 }
+ExitButton.propTypes = {
+    onClick: PropTypes.func.isRequired
+}
+
 
 /**
  * Info Button react component
  * @param {*} onClick onclick action of button
  * @returns button JSX component
  */
-export function InfoButton({ onClick }) {
+export const InfoButton = ({ onClick }) => {
     return (
         <Button content={'Info'} type={'button'} onClick={onClick}
             className={'mx-2 my-1 py-[3px] px-2 text-center text-white font-semibold bg-notenapp-blue hover:bg-notenapp-blue-hover focus:bg-notenapp-blue-hover rounded-lg cursor-pointer transition-all'} />
     );
 }
+InfoButton.propTypes = {
+    onClick: PropTypes.func.isRequired
+}
+
 
 /**
  * Add Grade Button react component
@@ -66,6 +84,9 @@ export const AddGradeButton = ({ onClick }) => {
         />
     );
 }
+AddGradeButton.propTypes = {
+    onClick: PropTypes.func.isRequired
+}
 
 /**
  * Remove Grade Button react component
@@ -87,4 +108,7 @@ export const RemoveGradeButton = ({ onClick }) => {
             className={'flex items-center justify-center mt-2 md:mt-0 w-full px-4 py-2 ml-4 rounded-lg bg-red-700 text-white hover:bg-red-600 transition-all'}
         />
     );
+}
+RemoveGradeButton.propTypes = {
+    onClick: PropTypes.func.isRequired
 }
