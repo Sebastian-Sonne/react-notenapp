@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Button, { ExitButton } from './Button';
 import { TableHead, TableBody } from './Table';
 import { StudentForm, InfoForm } from './Form';
@@ -67,6 +68,9 @@ export const SubHeader = ({ toggleForm }) => {
         </div>
     );
 }
+SubHeader.propTypes = {
+    toggleForm: PropTypes.func.isRequired
+}
 
 /**
  * Table Container react component
@@ -75,7 +79,7 @@ export const SubHeader = ({ toggleForm }) => {
  * @param {*} setStudent function to set the current student
  * @returns Table Container JSX component
  */
-export const TableContainer = ({ students, toggleInfo, setStudent }) => {
+export const TableContainer = ({ students, toggleInfo, setCurrentStudent }) => {
     return (
         <div className='w-full px-4'>
             <div className='w-full p-4 bg-gray-50 rounded-lg'>
@@ -83,7 +87,7 @@ export const TableContainer = ({ students, toggleInfo, setStudent }) => {
                     <table className="table-auto border-collapse w-full">
 
                         <TableHead />
-                        <TableBody students={students} toggleInfo={toggleInfo} setStudent={setStudent} />
+                        <TableBody students={students} toggleInfo={toggleInfo} setStudent={setCurrentStudent} />
 
                     </table>
                 </div>
@@ -94,6 +98,11 @@ export const TableContainer = ({ students, toggleInfo, setStudent }) => {
             </div>
         </div>
     );
+}
+TableContainer.propTypes = {
+    students: PropTypes.arrayOf(PropTypes.object).isRequired,
+    toggleInfo: PropTypes.func.isRequired,
+    setCurrentStudent: PropTypes.func.isRequired
 }
 
 /**
@@ -138,7 +147,7 @@ export const NewStudentBox = ({ isVisible, toggleForm, addStudent }) => {
         return () => {
             document.removeEventListener('keydown', handleKeyDown);
         };
-    }, [isVisible]);
+    }, [isVisible, handleKeyDown]);
 
     return (
         <>
@@ -162,6 +171,11 @@ export const NewStudentBox = ({ isVisible, toggleForm, addStudent }) => {
         </>
     );
 }
+NewStudentBox.propTypes = {
+    isVisible: PropTypes.bool.isRequired,
+    toggleForm: PropTypes.func.isRequired,
+    addStudent: PropTypes.func.isRequired
+}
 
 /**
  * Student info box react component
@@ -182,7 +196,7 @@ export const StudentInfoBox = ({ isVisible, toggleInfo, student, deleteStudent }
         return () => {
             document.removeEventListener('keydown', handleKeyDown);
         };
-    }, [isVisible]);
+    }, [isVisible, handleKeyDown]);
 
     const [showConfirmDelete, setConfirmDelete] = useState(false);
     const toggleConfirmDelete = () => { setConfirmDelete(!showConfirmDelete) };
@@ -252,6 +266,12 @@ export const StudentInfoBox = ({ isVisible, toggleInfo, student, deleteStudent }
         </>
     );
 }
+NewStudentBox.propTypes = {
+    isVisible: PropTypes.bool.isRequired,
+    toggleInfo: PropTypes.func.isRequired,
+    student: PropTypes.object,
+    deleteStudent: PropTypes.func.isRequired
+}
 
 
 /**
@@ -268,4 +288,8 @@ export const Title = ({ title, className }) => {
             </h1>
         </>
     );
+}
+Title.propTypes = {
+    title: PropTypes.string.isRequired,
+    className: PropTypes.string
 }
