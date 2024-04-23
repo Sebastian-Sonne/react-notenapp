@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import PropTypes from 'prop-types';
 import { AddGradeButton, RemoveGradeButton } from './Button';
 import * as validateModule from '../assets/js/validate';
 
@@ -13,6 +14,11 @@ const Label = ({ htmlFor, content, className }) => {
     return (
         <label htmlFor={htmlFor} className={className}>{content}</label>
     );
+}
+Label.propTypes = {
+    htmlFor: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    className: PropTypes.string
 }
 
 /**
@@ -31,6 +37,10 @@ const ErrorMessage = ({ content, isVisible = false }) => {
             )}
         </>
     );
+}
+ErrorMessage.propTypes = {
+    content: PropTypes.string.isRequired,
+    isVisible: PropTypes.bool
 }
 
 /**
@@ -76,6 +86,11 @@ export const NameInput = ({ disabled = false, name, setName }) => {
         </div>
     );
 }
+NameInput.propTypes = {
+    disabled: PropTypes.bool,
+    name: PropTypes.string.isRequired,
+    setName: PropTypes.func.isRequired
+}
 
 /**
  * Id input field react component
@@ -119,6 +134,11 @@ export const IdInput = ({ disabled = false, id, setId }) => {
             )}
         </div>
     );
+}
+IdInput.propTypes = {
+    disabled: PropTypes.bool,
+    id: PropTypes.string.isRequired,
+    setId: PropTypes.func.isRequired
 }
 
 /**
@@ -164,6 +184,11 @@ export const EmailInput = ({ disabled = false, email, setEmail }) => {
         </div>
     );
 }
+EmailInput.propTypes = {
+    disabled: PropTypes.bool,
+    email: PropTypes.string.isRequired,
+    setEmail: PropTypes.func.isRequired
+}
 
 /**
  * Written and Oral grade input field react component
@@ -181,6 +206,12 @@ export const GradeInputs = ({ writtenGrades, setWrittenGrades, oralGrades, setOr
         </>
     );
 }
+GradeInputs.propTypes = {
+    writtenGrades: PropTypes.arrayOf(PropTypes.number).isRequired,
+    setWrittenGrades: PropTypes.func.isRequired,
+    oralGrades: PropTypes.arrayOf(PropTypes.number).isRequired,
+    setOralGrades: PropTypes.func.isRequired
+}
 
 /**
  * Grade input field react component
@@ -189,7 +220,7 @@ export const GradeInputs = ({ writtenGrades, setWrittenGrades, oralGrades, setOr
  * @param {*} setGrades function to set grades (useState together with grades in parent component)
  * @returns Grade input field JSX component
  */
-const GradeInput = ({ isWritten, grades, setGrades }) => {
+const GradeInput = ({ isWritten = false, grades, setGrades }) => {
     const inputRef = useRef(null);
 
     const addGrades = () => {
@@ -247,4 +278,9 @@ const GradeInput = ({ isWritten, grades, setGrades }) => {
             </div>
         </div>
     );
+}
+GradeInput.propTypes = {
+    isWritten: PropTypes.bool,
+    addStudent: PropTypes.arrayOf(PropTypes.number).isRequired,
+    toggleForm: PropTypes.func.isRequired
 }
