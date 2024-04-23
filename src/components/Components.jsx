@@ -4,6 +4,7 @@ import { TableHead, TableBody } from './Table';
 import { StudentForm, InfoForm } from './Form';
 import ConfirmDeleteBox from "./ConfirmDelete";
 import notenappSVG from '../assets/media/notenapp.svg';
+import { NoStudents } from './Notification';
 
 /**
  * Header react component
@@ -88,10 +89,7 @@ export const TableContainer = ({ students, toggleInfo, setStudent }) => {
                 </div>
 
                 {students.length === 0 && (
-                    <div className="flex-col align-middle w-full">
-                        <h2 className="font-bold text-3xl text-center text-gray-800">Keine Schüler Gefunden</h2>
-                        <p className="text-center text-lg text-gray-700">Füge einen neuen Schüler hinzu!</p>
-                    </div>
+                    <NoStudents />
                 )}
             </div>
         </div>

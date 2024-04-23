@@ -2,6 +2,12 @@ import React from "react";
 import { ExitButton } from "./Button";
 import { Title, Footer } from "./Components";
 
+/**
+ * default Notification react component (useState to close)
+ * @param {*} notification notification that is displayed 
+ * @param {*} setNofitication change notification (use State) -> setNotification('') to hide
+ * @returns Notification JSX component
+ */
 export const Notification = ({ notification, setNotification }) => {
     const hideNotification = () => {
         setNotification('');
@@ -34,6 +40,19 @@ export const NoLocalStorage = () => {
             <p className="text-xl text-center text-gray-700">Verwende einen unterstützten Browser.</p>
 
             <Footer />
+        </div>
+    );
+}
+
+/**
+ * NoStudents react component if no students are found
+ * @returns NoStudents JSX component
+ */
+export const NoStudents = () => {
+    return (
+        <div className="flex-col align-middle w-full">
+            <h2 className="font-bold text-3xl text-center text-gray-800">Keine Schüler Gefunden</h2>
+            <p className="text-center text-lg text-gray-700">Füge einen neuen Schüler hinzu!</p>
         </div>
     );
 }
