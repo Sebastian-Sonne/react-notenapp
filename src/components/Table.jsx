@@ -76,7 +76,7 @@ const Tr = ({ student, toggleInfo, setCurrentStudent }) => {
     );
 }
 Tr.propTypes = {
-    students: PropTypes.arrayOf(PropTypes.object).isRequired,
+    student: PropTypes.object.isRequired,
     toggleInfo: PropTypes.func.isRequired,
     setCurrentStudent: PropTypes.func.isRequired
 }
@@ -96,5 +96,5 @@ const Td = ({ className, content }) => {
 }
 Td.propTypes = {
     className: PropTypes.string,
-    content: PropTypes.string
+    content: PropTypes.any
 }

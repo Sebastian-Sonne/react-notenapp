@@ -9,7 +9,7 @@ import * as Notify from './components/Notification.jsx';
  */
 export const App = () => {
 
-    if (typeof (Storage) === undefined) return <Notify.NoLocalStorage />;
+    if (typeof (Storage) === 'undefined') return <Notify.NoLocalStorage />;
 
     const [students, setStudents] = useState(storageModule.loadData('students'));
     const addStudent = (student) => {
@@ -65,7 +65,7 @@ export const App = () => {
                 <Components.TableContainer
                     students={students}
                     toggleInfo={toggleInfo}
-                    setStudent={setCurrentStudent} />
+                    setCurrentStudent={setCurrentStudent} />
 
                 <Components.Footer />
 

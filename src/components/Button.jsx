@@ -15,7 +15,7 @@ export const Button = ({ content, onClick, className, type }) => {
     );
 }
 Button.propTypes = {
-    content: PropTypes.string,
+    content: PropTypes.any,
     onClick: PropTypes.func,
     className: PropTypes.string,
     type: PropTypes.oneOf(['button', 'submit', 'reset'])
@@ -59,7 +59,7 @@ export const InfoButton = ({ onClick }) => {
     );
 }
 InfoButton.propTypes = {
-    onClick: PropTypes.func.isRequired
+    onClick: PropTypes.func
 }
 
 

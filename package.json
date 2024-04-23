@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently \"vite\" \"tailwindcss -i ./src/assets/css/input.css -o ./src/assets/css/styles.css --watch\"",
     "build": "vite build",
-    "deploy": "vite build && gh-pages -d dist",
+    "deploy": "vite build && copy CNAME dist && gh-pages -d dist",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

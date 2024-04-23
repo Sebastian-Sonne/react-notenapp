@@ -29,7 +29,7 @@ export const Notification = ({ notification, setNotification }) => {
 }
 Notification.propTypes = {
     notification: PropTypes.string.isRequired,
-    setNofitication: PropTypes.func.isRequired
+    setNofitication: PropTypes.func
 }
 export default Notification
 

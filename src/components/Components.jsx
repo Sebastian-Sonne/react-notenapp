@@ -101,7 +101,7 @@ export const TableContainer = ({ students, toggleInfo, setCurrentStudent }) => {
 }
 TableContainer.propTypes = {
     students: PropTypes.arrayOf(PropTypes.object).isRequired,
-    toggleInfo: PropTypes.func.isRequired,
+    toggleInfo: PropTypes.func,
     setCurrentStudent: PropTypes.func.isRequired
 }
 
@@ -173,7 +173,7 @@ export const NewStudentBox = ({ isVisible, toggleForm, addStudent }) => {
 }
 NewStudentBox.propTypes = {
     isVisible: PropTypes.bool.isRequired,
-    toggleForm: PropTypes.func.isRequired,
+    toggleForm: PropTypes.func,
     addStudent: PropTypes.func.isRequired
 }
 
@@ -186,6 +186,23 @@ NewStudentBox.propTypes = {
  * @returns student info box field JSX component
  */
 export const StudentInfoBox = ({ isVisible, toggleInfo, student, deleteStudent }) => {
+
+    /**
+     * function to handle keydown events
+     * @param {*} event keydown event
+     */
+    const handleKeyDown = (event) => {
+        if (event.key === 'Escape') {
+            setConfirmDelete(prevState => {
+                if (!prevState) {
+                    toggleInfo();
+                } else {
+                    return !prevState;
+                }
+                return prevState;
+            });
+        }
+    };
 
     useEffect(() => {
         if (isVisible) {
@@ -209,23 +226,6 @@ export const StudentInfoBox = ({ isVisible, toggleInfo, student, deleteStudent }
         toggleConfirmDelete();
         toggleInfo();
     }
-
-    /**
-     * function to handle keydown events
-     * @param {*} event keydown event
-     */
-    const handleKeyDown = (event) => {
-        if (event.key === 'Escape') {
-            setConfirmDelete(prevState => {
-                if (!prevState) {
-                    toggleInfo();
-                } else {
-                    return !prevState;
-                }
-                return prevState;
-            });
-        }
-    };
 
     return (
         <>
@@ -268,9 +268,9 @@ export const StudentInfoBox = ({ isVisible, toggleInfo, student, deleteStudent }
 }
 NewStudentBox.propTypes = {
     isVisible: PropTypes.bool.isRequired,
-    toggleInfo: PropTypes.func.isRequired,
+    toggleInfo: PropTypes.func,
     student: PropTypes.object,
-    deleteStudent: PropTypes.func.isRequired
+    deleteStudent: PropTypes.func
 }
 
 
