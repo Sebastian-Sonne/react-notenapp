@@ -87,7 +87,7 @@ export const TableContainer = ({ students, toggleInfo, setCurrentStudent }) => {
                     <table className="table-auto border-collapse w-full">
 
                         <TableHead />
-                        <TableBody students={students} toggleInfo={toggleInfo} setStudent={setCurrentStudent} />
+                        <TableBody students={students} toggleInfo={toggleInfo} setCurrentStudent={setCurrentStudent} />
 
                     </table>
                 </div>

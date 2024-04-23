@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { InfoButton } from './Button';
 import { sortStudents } from '../assets/js/students';
 
@@ -27,7 +28,7 @@ export const TableHead = () => {
  * @param {*} setStudent function to set the current student
  * @returns Table Body JSX component
  */
-export const TableBody = ({ students, toggleInfo, setStudent }) => {
+export const TableBody = ({ students, toggleInfo, setCurrentStudent }) => {
 
     const sortedStudents = sortStudents(students);
 
@@ -38,11 +39,16 @@ export const TableBody = ({ students, toggleInfo, setStudent }) => {
                     key={index}
                     student={sortedStudents[index]} 
                     toggleInfo={toggleInfo} 
-                    setStudent={setStudent}
+                    setCurrentStudent={setCurrentStudent}
                 />
             ))}
         </tbody>
     );
+}
+TableBody.propTypes = {
+    students: PropTypes.arrayOf(PropTypes.object).isRequired,
+    toggleInfo: PropTypes.func.isRequired,
+    setCurrentStudent: PropTypes.func.isRequired
 }
 
 /**
@@ -52,10 +58,10 @@ export const TableBody = ({ students, toggleInfo, setStudent }) => {
  * @param {*} setStudent function to set the current student
  * @returns Table Row JSX component
  */
-const Tr = ({ student, toggleInfo, setStudent }) => {
+const Tr = ({ student, toggleInfo, setCurrentStudent }) => {
 
     const handleClick = () => {
-        setStudent(student);
+        setCurrentStudent(student);
         toggleInfo();
     }
 
@@ -68,6 +74,11 @@ const Tr = ({ student, toggleInfo, setStudent }) => {
             <Td content={<InfoButton />} className={'border-y'} />
         </tr>
     );
+}
+Tr.propTypes = {
+    students: PropTypes.arrayOf(PropTypes.object).isRequired,
+    toggleInfo: PropTypes.func.isRequired,
+    setCurrentStudent: PropTypes.func.isRequired
 }
 
 /**
@@ -82,4 +93,8 @@ const Td = ({ className, content }) => {
             {content}
         </td>
     );
+}
+Td.propTypes = {
+    className: PropTypes.string,
+    content: PropTypes.string
 }
