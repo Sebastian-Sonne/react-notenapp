@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { ExitButton } from "./Button";
 import { Title, Footer } from "./Components";
 
@@ -25,6 +26,10 @@ export const Notification = ({ notification, setNotification }) => {
             )}
         </>
     );
+}
+Notification.propTypes = {
+    notification: PropTypes.string.isRequired,
+    setNofitication: PropTypes.func.isRequired
 }
 export default Notification
 
