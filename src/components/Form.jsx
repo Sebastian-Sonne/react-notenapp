@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Button from './Button';
+import PropTypes from 'prop-types';
 import { EmailInput, GradeInputs, IdInput, NameInput } from './Input';
 import { calculateAverage } from "../assets/js/students";
 import { validateForm } from "../assets/js/validate";
@@ -72,6 +73,10 @@ export const StudentForm = ({ addStudent, toggleForm }) => {
         </form>
     );
 };
+StudentForm.propTypes = {
+    addStudent: PropTypes.func.isRequired,
+    toggleForm: PropTypes.func.isRequired
+}
 
 /**
  * Student InfoForm React Component
@@ -129,6 +134,9 @@ export const InfoForm = ({ student }) => {
         </form>
     );
 }
+InfoForm.propTypes = {
+    student: PropTypes.object.isRequired
+}
 
 /**
  * function to generate a tr html element for student grades
@@ -147,4 +155,9 @@ const generateTr = (index, writtenGrades, oralGrades) => {
             <td className="border px-4 py-2">{oralGrade}</td>
         </tr>
     );
+}
+generateTr.propTypes = {
+    index: PropTypes.number.isRequired,
+    writtenGrades: PropTypes.arrayOf(PropTypes.number).isRequired,
+    oralGrades: PropTypes.arrayOf(PropTypes.number).isRequired
 }
