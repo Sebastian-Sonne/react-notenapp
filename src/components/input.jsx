@@ -2,12 +2,25 @@ import React, { useRef, useState } from "react";
 import { AddGradeButton, RemoveGradeButton } from './Button';
 import * as validateModule from '../assets/js/validate';
 
+/**
+ * generic Label for input component react component
+ * @param {*} htmlFor for attribute
+ * @param {*} content content of label
+ * @param {*} className classes of label
+ * @return Label JSX component
+ */
 const Label = ({ htmlFor, content, className }) => {
     return (
         <label htmlFor={htmlFor} className={className}>{content}</label>
     );
 }
 
+/**
+ * Error Message for input component react component
+ * @param {*} content error message
+ * @param {*} isVisible initial false, true if visible
+ * @return Error Message JSX component
+ */
 const ErrorMessage = ({ content, isVisible = false }) => {
     return (
         <>

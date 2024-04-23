@@ -26,7 +26,6 @@ export const Notification = ({ notification, setNotification }) => {
         </>
     );
 }
-
 export default Notification
 
 /**
