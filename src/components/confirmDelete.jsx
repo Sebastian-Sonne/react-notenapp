@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { Title } from "./Components";
 import Button from "./Button";
 
@@ -28,6 +29,14 @@ export const ConfirmDeleteBox = ({ isVisible, toggleBox, handleDelete }) => {
         </>
     );
 }
+ConfirmDeleteBox.propTypes = {
+    isVisible: PropTypes.bool.isRequired,
+    toggleBox: PropTypes.func.isRequired,
+    handleDelete: PropTypes.func.isRequired
+}
+
+export default ConfirmDeleteBox;
+
 
 /**
  * Confirm Delete Box content react component
@@ -57,5 +66,7 @@ const ConfirmDeleteContent = ({ toggleBox, handleDelete }) => {
         </div>
     );
 }
-
-export default ConfirmDeleteBox;
+ConfirmDeleteContent.propTypes = {
+    toggleBox: PropTypes.func.isRequired,
+    handleDelete: PropTypes.func.isRequired
+}
