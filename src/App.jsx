@@ -37,14 +37,12 @@ export const App = () => {
         return () => { document.body.classList.remove('overflow-hidden') };
     }, [showForm, showInfo]);
 
-    if (typeof (Storage) === 'undefined') return <Notify.NoLocalStorage />;
-
     return (
         <>
             {typeof (Storage) === 'undefined' ? (<Notify.NoLocalStorage />) : (
                 <div className={'flex justify-center min-h-screen'}>
                     <div className='flex flex-col max-w-6xl w-full'>
-                        
+
                         <Components.Header />
 
                         <Notify.Notification
