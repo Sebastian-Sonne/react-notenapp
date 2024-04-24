@@ -9,7 +9,7 @@ import * as Notify from './components/Notification.jsx';
  */
 export const App = () => {
 
-    const [students, setStudents] = useState((typeof (Storage) === 'undefined') ? storageModule.loadData('students') : []);
+    const [students, setStudents] = useState((typeof (Storage) !== 'undefined') ? storageModule.loadData('students') : []);
     const [currentStudent, setCurrentStudent] = useState(null);
     const [showForm, setShowForm] = useState(false);
     const [showInfo, setShowInfo] = useState(false);

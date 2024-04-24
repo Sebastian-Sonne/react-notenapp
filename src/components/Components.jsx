@@ -187,6 +187,9 @@ NewStudentBox.propTypes = {
  */
 export const StudentInfoBox = ({ isVisible, toggleInfo, student, deleteStudent }) => {
 
+    const [showConfirmDelete, setConfirmDelete] = useState(false);
+    const toggleConfirmDelete = () => { setConfirmDelete(!showConfirmDelete) };
+
     /**
      * function to handle keydown events
      * @param {*} event keydown event
@@ -214,9 +217,6 @@ export const StudentInfoBox = ({ isVisible, toggleInfo, student, deleteStudent }
             document.removeEventListener('keydown', handleKeyDown);
         };
     }, [isVisible, handleKeyDown]);
-
-    const [showConfirmDelete, setConfirmDelete] = useState(false);
-    const toggleConfirmDelete = () => { setConfirmDelete(!showConfirmDelete) };
 
     /**
      * function to handle deletion of a student
