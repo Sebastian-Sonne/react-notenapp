@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import PropTypes from 'prop-types';
 import { AddGradeButton, RemoveGradeButton } from './Button';
 import * as validateModule from '../assets/js/validate';
@@ -281,6 +281,6 @@ const GradeInput = ({ isWritten = false, grades, setGrades }) => {
 }
 GradeInput.propTypes = {
     isWritten: PropTypes.bool,
-    addStudent: PropTypes.arrayOf(PropTypes.number).isRequired,
-    toggleForm: PropTypes.func.isRequired
+    grades: PropTypes.arrayOf(PropTypes.number).isRequired,
+    setGrades: PropTypes.func.isRequired
 }

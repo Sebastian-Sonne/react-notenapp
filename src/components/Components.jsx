@@ -266,7 +266,7 @@ export const StudentInfoBox = ({ isVisible, toggleInfo, student, deleteStudent }
         </>
     );
 }
-NewStudentBox.propTypes = {
+StudentInfoBox.propTypes = {
     isVisible: PropTypes.bool.isRequired,
     toggleInfo: PropTypes.func,
     student: PropTypes.object,
