@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Button, { ExitButton } from './Button';
 import { TableHead, TableBody } from './Table';
@@ -132,11 +132,11 @@ export const NewStudentBox = ({ isVisible, toggleForm, addStudent }) => {
      * function to handle keydown events
      * @param {*} event keydown event
      */
-    const handleKeyDown = (event) => {
+    const handleKeyDown = useCallback((event) => {
         if (event.key === 'Escape') {
             toggleForm();
         }
-    };
+    }, [toggleForm]);
 
     useEffect(() => {
         if (isVisible) {
@@ -191,7 +191,7 @@ export const StudentInfoBox = ({ isVisible, toggleInfo, student, deleteStudent }
      * function to handle keydown events
      * @param {*} event keydown event
      */
-    const handleKeyDown = (event) => {
+    const handleKeyDown = useCallback((event) => {
         if (event.key === 'Escape') {
             setConfirmDelete(prevState => {
                 if (!prevState) {
@@ -202,7 +202,7 @@ export const StudentInfoBox = ({ isVisible, toggleInfo, student, deleteStudent }
                 return prevState;
             });
         }
-    };
+    }, [setConfirmDelete, toggleInfo]);
 
     useEffect(() => {
         if (isVisible) {
