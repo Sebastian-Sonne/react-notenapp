@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from 'prop-types';
 import { ExitButton } from "./Button";
 import { Title, Footer } from "./Components";

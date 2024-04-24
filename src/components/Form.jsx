@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Button from './Button';
 import PropTypes from 'prop-types';
 import { EmailInput, GradeInputs, IdInput, NameInput } from './Input';

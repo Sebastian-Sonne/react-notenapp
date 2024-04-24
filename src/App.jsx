@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import * as storageModule from './assets/js/storage.js';
 import * as Components from './components/Components.jsx';
 import * as Notify from './components/Notification.jsx';

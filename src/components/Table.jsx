@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { InfoButton } from './Button';
 import { sortStudents } from '../assets/js/students';
