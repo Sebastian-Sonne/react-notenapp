@@ -45,12 +45,12 @@ export const App = () => {
 
                         <Components.Header />
 
+                        <Components.SubHeader
+                            toggleForm={toggleForm} />
+
                         <Notify.Notification
                             notification={notification}
                             setNotification={setNotification} />
-
-                        <Components.SubHeader
-                            toggleForm={toggleForm} />
 
                         <Components.TableContainer
                             students={students}

@@ -9,18 +9,18 @@ import { Title, Footer } from "./Components";
  * @returns Notification JSX component
  */
 export const Notification = ({ notification, setNotification }) => {
-    const hideNotification = () => {
-        setNotification('');
-    }
+    const hideNotification = () => { setNotification('') }
 
     return (
         <>
             {notification != '' && (
-                <div className="flex flex-row fixed top-0 right-0 m-2 p-1 bg-gray-50 border-2 border-gray-400 rounded-lg shadow-lg z-10">
+                <div className='w-full max-w-6xl fixed top-0'>
+                    <div className="flex flex-row w-min ml-auto mr-4 my-2 p-1 bg-gray-50 border-2 border-green-600 rounded-lg shadow-lg z-10">
 
-                    <Title title={notification} className={'text-xl font-semibold m-1 px-2 pb-2 pt-1'} />
-                    <ExitButton onClick={hideNotification} />
+                        <Title title={notification} className={'text-xl font-semibold m-1 px-2 pb-2 pt-1 whitespace-nowrap'} />
+                        <ExitButton onClick={hideNotification} />
 
+                    </div>
                 </div>
             )}
         </>
