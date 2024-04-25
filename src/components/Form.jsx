@@ -92,7 +92,7 @@ export const InfoForm = ({ student }) => {
     }
 
     return (
-        <form id="add-student-form" className="flex flex-col space-y-4">
+        <form className="flex flex-col space-y-4">
 
             <div className="flex flex-wrap -mx-2">
 
@@ -123,7 +123,7 @@ export const InfoForm = ({ student }) => {
                                 <th className="px-4 py-2">Mündliche Noten</th>
                             </tr>
                         </thead>
-                        <tbody id="grade-table-body" className="text-gray-600 bg-white">
+                        <tbody className="text-gray-600 bg-white">
 
                             {rows}
 

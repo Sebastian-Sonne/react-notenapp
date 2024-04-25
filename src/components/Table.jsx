@@ -32,7 +32,7 @@ export const TableBody = ({ students, toggleInfo, setCurrentStudent }) => {
     const sortedStudents = sortStudents(students);
 
     return (
-        <tbody id="students-table-body" className="text-gray-600 bg-white">
+        <tbody className="text-gray-600 bg-white">
             {sortedStudents.map((_, index) => (
                 <Tr 
                     key={index}

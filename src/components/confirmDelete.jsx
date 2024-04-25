@@ -13,9 +13,8 @@ export const ConfirmDeleteBox = ({ isVisible, toggleBox, handleDelete }) => {
     return (
         <>
             {isVisible && (
-                <section id="confirm-delete-box"
-                    className="flex justify-center fixed top-0 left-0 w-full h-full backdrop-brightness-50 backdrop-blur-sm z-20">
-                    <div id="delete-student-box" className="sm:max-w-2xl w-full mx-auto mb-auto p-4 z-30">
+                <div className="flex justify-center fixed top-0 left-0 w-full h-full backdrop-brightness-50 backdrop-blur-sm z-20">
+                    <div className="sm:max-w-2xl w-full mx-auto mb-auto p-4 z-30">
 
                         <ConfirmDeleteContent 
                             toggleBox={toggleBox}
@@ -23,7 +22,7 @@ export const ConfirmDeleteBox = ({ isVisible, toggleBox, handleDelete }) => {
                         />
 
                     </div>
-                </section>
+                </div>
             )}
         </>
     );

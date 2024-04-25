@@ -230,8 +230,7 @@ export const StudentInfoBox = ({ isVisible, toggleInfo, student, deleteStudent }
     return (
         <>
             {isVisible && (
-                <section id="student-info-box"
-                    className="flex justify-center fixed top-0 left-0 w-full h-full backdrop-brightness-50 backdrop-blur-sm overflow-y-auto z-20">
+                <div className="flex justify-center fixed top-0 left-0 w-full h-full backdrop-brightness-50 backdrop-blur-sm overflow-y-auto z-20">
                     <div className="sm:max-w-4xl w-full mx-auto my-auto p-4">
                         <div className="p-6 bg-gray-100 rounded-lg shadow-lg">
                             <div className="flex justify-between">
@@ -261,7 +260,7 @@ export const StudentInfoBox = ({ isVisible, toggleInfo, student, deleteStudent }
                         toggleBox={toggleConfirmDelete}
                         handleDelete={handleDelete}
                     />
-                </section>
+                </div>
             )}
         </>
     );
