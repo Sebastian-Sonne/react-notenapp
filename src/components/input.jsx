@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { AddGradeButton, RemoveGradeButton } from './Button';
 import * as validateModule from '../assets/js/validate';
@@ -31,7 +31,7 @@ const ErrorMessage = ({ content, isVisible = false }) => {
     return (
         <>
             {isVisible && (
-                <p className="absolute top-full left-1/2 -translate-x-1/2 bg-white shadow-md rounded-lg px-3 py-1 mt-1 text-red-500 z-30" >
+                <p className='absolute top-full left-1/2 -translate-x-1/2 bg-white shadow-md rounded-lg px-3 py-1 mt-1 text-red-500 z-30' >
                     {content}
                 </p >
             )}
@@ -63,7 +63,7 @@ export const NameInput = ({ disabled = false, name, setName }) => {
     };
 
     return (
-        <div className="w-full md:w-1/2 px-2 mt-4 relative">
+        <div className='w-full md:w-1/2 px-2 mt-4 relative'>
             <Label htmlFor={'name'} className={'text-gray-800'} content={'Name:'} />
 
             <input type='text'
@@ -246,9 +246,9 @@ const GradeInput = ({ isWritten = false, grades, setGrades }) => {
     };
 
     return (
-        <div className="flex flex-wrap -mx-2">
-            <div className="w-full md:w-3/4 px-2">
-                <div className="flex flex-col max-h-[400px] overflow-y-auto">
+        <div className='flex flex-wrap -mx-2'>
+            <div className='w-full md:w-3/4 px-2'>
+                <div className='flex flex-col max-h-[400px] overflow-y-auto'>
 
                     <Label
                         htmlFor={'writtenGrade[]'}
@@ -258,21 +258,21 @@ const GradeInput = ({ isWritten = false, grades, setGrades }) => {
 
                     {grades.map((grade, index) => (
 
-                        <input type="number"
+                        <input type='number'
                             ref={index === grades.length - 1  ? inputRef : null}
                             name={isWritten ? 'writtenGrade[]' : 'oralGrade[]'}
                             key={index}
                             value={grade}
                             onChange={(e) => handleGradeChange(index, e.target.value)}
                             placeholder={index === 0 ? Math.round(Math.random() * 5) + 1 : ''}
-                            className="writtenGrade w-full px-4 py-2 mb-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none"
+                            className='writtenGrade w-full px-4 py-2 mb-2 rounded-lg border border-transparent focus:border-green-600 focus:outline-none'
                         />
 
                     ))}
                 </div>
             </div>
 
-            <div className="w-full md:w-1/4 px-2 mb-2 flex items-end">
+            <div className='w-full md:w-1/4 px-2 mb-2 flex items-end'>
                 <AddGradeButton onClick={addGrades} />
                 {grades.length > 0 && <RemoveGradeButton onClick={() => removeGrades(grades.length - 1)} />}
             </div>

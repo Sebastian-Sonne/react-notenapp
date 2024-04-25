@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState } from 'react';
 import Button from './Button';
 import PropTypes from 'prop-types';
 import { EmailInput, GradeInputs, IdInput, NameInput } from './Input';
-import { calculateAverage } from "../assets/js/students";
-import { validateForm } from "../assets/js/validate";
+import { calculateAverage } from '../assets/js/students';
+import { validateForm } from '../assets/js/validate';
 
 /**
  * New StudentForm React Component
@@ -46,10 +46,10 @@ export const StudentForm = ({ addStudent, toggleForm }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+        <form onSubmit={handleSubmit} className='flex flex-col space-y-4'>
 
             {/* Inputs */}
-            <div className="flex flex-wrap -mx-2">
+            <div className='flex flex-wrap -mx-2'>
                 <NameInput name={name} setName={setName} />
                 <IdInput id={id} setId={setId} />
             </div>
@@ -92,9 +92,9 @@ export const InfoForm = ({ student }) => {
     }
 
     return (
-        <form className="flex flex-col space-y-4">
+        <form className='flex flex-col space-y-4'>
 
-            <div className="flex flex-wrap -mx-2">
+            <div className='flex flex-wrap -mx-2'>
 
                 <NameInput
                     name={(student.name) ? student.name : 'N/A'}
@@ -113,17 +113,17 @@ export const InfoForm = ({ student }) => {
                 disabled={true}
             />
 
-            <div className="w-full">
-                <label htmlFor="info-grades" className="text-gray-800">Noten:</label>
-                <div className="w-full rounded-t-lg overflow-x-auto max-h-[400px] overflow-y-auto">
-                    <table className="table-auto border-collapse w-full">
+            <div className='w-full'>
+                <label htmlFor='info-grades' className='text-gray-800'>Noten:</label>
+                <div className='w-full rounded-t-lg overflow-x-auto max-h-[400px] overflow-y-auto'>
+                    <table className='table-auto border-collapse w-full'>
                         <thead>
-                            <tr className="bg-gray-200 text-gray-700">
-                                <th className="px-4 py-2">Schriftliche Noten</th>
-                                <th className="px-4 py-2">Mündliche Noten</th>
+                            <tr className='bg-gray-200 text-gray-700'>
+                                <th className='px-4 py-2'>Schriftliche Noten</th>
+                                <th className='px-4 py-2'>Mündliche Noten</th>
                             </tr>
                         </thead>
-                        <tbody className="text-gray-600 bg-white">
+                        <tbody className='text-gray-600 bg-white'>
 
                             {rows}
 
@@ -151,8 +151,8 @@ const generateTr = (index, writtenGrades, oralGrades) => {
 
     return (
         <tr key={index}>
-            <td className="border px-4 py-2">{writtenGrade}</td>
-            <td className="border px-4 py-2">{oralGrade}</td>
+            <td className='border px-4 py-2'>{writtenGrade}</td>
+            <td className='border px-4 py-2'>{oralGrade}</td>
         </tr>
     );
 }

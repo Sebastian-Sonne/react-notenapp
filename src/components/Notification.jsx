@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import { ExitButton } from "./Button";
-import { Title, Footer } from "./Components";
+import { ExitButton } from './Button';
+import { Title, Footer } from './Components';
 
 /**
  * default Notification react component (useState to close)
@@ -15,7 +15,7 @@ export const Notification = ({ notification, setNotification }) => {
         <>
             {notification != '' && (
                 <div className='w-full max-w-6xl fixed top-0'>
-                    <div className="flex flex-row w-min ml-auto mr-4 my-2 p-1 bg-gray-50 border-2 border-green-600 rounded-lg shadow-lg z-10">
+                    <div className='flex flex-row w-min ml-auto mr-4 my-2 p-1 bg-gray-50 border-2 border-green-600 rounded-lg shadow-lg z-10'>
 
                         <Title title={notification} className={'text-xl font-semibold m-1 px-2 pb-2 pt-1 whitespace-nowrap'} />
                         <ExitButton onClick={hideNotification} />
@@ -38,9 +38,9 @@ export default Notification
  */
 export const NoLocalStorage = () => {
     return (
-        <div className="flex flex-col items-center justify-center w-screen h-screen">
+        <div className='flex flex-col items-center justify-center w-screen h-screen'>
             <Title title={'Lokaler Speicher nicht Erreichbar'} className={'font-bold text-3xl text-center text-gray-800'} />
-            <p className="text-xl text-center text-gray-700">Verwende einen unterstützten Browser.</p>
+            <p className='text-xl text-center text-gray-700'>Verwende einen unterstützten Browser.</p>
 
             <Footer />
         </div>
@@ -53,9 +53,9 @@ export const NoLocalStorage = () => {
  */
 export const NoStudents = () => {
     return (
-        <div className="flex-col align-middle w-full">
-            <h2 className="font-bold text-3xl text-center text-gray-800">Keine Schüler Gefunden</h2>
-            <p className="text-center text-lg text-gray-700">Füge einen neuen Schüler hinzu!</p>
+        <div className='flex-col align-middle w-full'>
+            <h2 className='font-bold text-3xl text-center text-gray-800'>Keine Schüler Gefunden</h2>
+            <p className='text-center text-lg text-gray-700'>Füge einen neuen Schüler hinzu!</p>
         </div>
     );
 }

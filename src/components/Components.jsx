@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Button, { ExitButton } from './Button';
 import { TableHead, TableBody } from './Table';
 import { StudentForm, InfoForm } from './Form';
-import ConfirmDeleteBox from "./ConfirmDelete";
+import ConfirmDeleteBox from './ConfirmDelete';
 import notenappSVG from '../assets/media/notenapp.svg';
 import { NoStudents } from './Notification';
 
@@ -19,8 +19,8 @@ export const Header = () => {
      */
     const Logo = () => {
         return (
-            <a className="aspect-square w-12 py-2 mx-4" href="/" tabIndex="1">
-                <img src={notenappSVG} alt="NotenappLogo" />
+            <a className='aspect-square w-12 py-2 mx-4' href='/' tabIndex='1'>
+                <img src={notenappSVG} alt='NotenappLogo' />
             </a>
         );
     }
@@ -31,14 +31,14 @@ export const Header = () => {
      */
     const UserIcon = () => {
         return (
-            <div className="flex justify-center aspect-square w-12 mx-4">
-                <div className="w-full aspect-square my-auto rounded-full bg-gray-300 cursor-pointer"></div>
+            <div className='flex justify-center aspect-square w-12 mx-4'>
+                <div className='w-full aspect-square my-auto rounded-full bg-gray-300 cursor-pointer'></div>
             </div>
         );
     }
 
     return (
-        <div className="flex justify-between max-w-6xl h-16 w-full mt-2 mb-4">
+        <div className='flex justify-between max-w-6xl h-16 w-full mt-2 mb-4'>
             <div className='flex'>
                 <Logo />
                 <Title title={'Lehrer Admin Panel'} className={'text-gray-700 text-2xl font-semibold mt-4'} />
@@ -56,12 +56,12 @@ export const Header = () => {
  */
 export const SubHeader = ({ toggleForm }) => {
     return (
-        <div className="flex max-w-6xl w-full px-4 mb-4 justify-between align-middle h-10">
+        <div className='flex max-w-6xl w-full px-4 mb-4 justify-between align-middle h-10'>
             <Title title={'Übersicht Schüler'} className={'h-10 pt-2 text-gray-700 text-2xl font-semibold'} />
 
             <Button onClick={toggleForm} type={'button'}
                 content={
-                    <span className="flex text-white font-semibold">Schüler Hinzufügen</span>
+                    <span className='flex text-white font-semibold'>Schüler Hinzufügen</span>
                 }
                 className={'px-4 py-2 rounded-lg bg-green-600 hover:bg-green-500 cursor-pointer transition-all'}
             />
@@ -83,8 +83,8 @@ export const TableContainer = ({ students, toggleInfo, setCurrentStudent }) => {
     return (
         <div className='w-full px-4'>
             <div className='w-full p-4 bg-gray-50 rounded-lg'>
-                <div className="w-full rounded-t-lg overflow-x-auto">
-                    <table className="table-auto border-collapse w-full">
+                <div className='w-full rounded-t-lg overflow-x-auto'>
+                    <table className='table-auto border-collapse w-full'>
 
                         <TableHead />
                         <TableBody students={students} toggleInfo={toggleInfo} setCurrentStudent={setCurrentStudent} />
@@ -112,8 +112,8 @@ TableContainer.propTypes = {
 export const Footer = () => {
     return (
         <div className='flex justify-center align-middle w-full h-6 my-2'>
-            <p className="text-gray-500 font-normal">&copy; {new Date().getFullYear()}
-                <a href="https://github.com/sebastian-sonne" className="text-slate-600 hover:text-notenapp-blue transition-colors" target="_blank"> Sebastian Sonne</a>
+            <p className='text-gray-500 font-normal'>&copy; {new Date().getFullYear()}
+                <a href='https://github.com/sebastian-sonne' className='text-slate-600 hover:text-notenapp-blue transition-colors' target='_blank'> Sebastian Sonne</a>
             </p>
         </div>
     );
@@ -153,11 +153,11 @@ export const NewStudentBox = ({ isVisible, toggleForm, addStudent }) => {
         <>
             {isVisible && (
                 <section onKeyDown={handleKeyDown}
-                    className="flex justify-center fixed top-0 left-0 w-full h-full backdrop-brightness-50 backdrop-blur-sm overflow-y-auto z-20">
-                    <div className="sm:max-w-4xl w-full mx-auto my-auto p-4">
-                        <div className="p-6 bg-gray-100 rounded-lg shadow-lg">
+                    className='flex justify-center fixed top-0 left-0 w-full h-full backdrop-brightness-50 backdrop-blur-sm overflow-y-auto z-20'>
+                    <div className='sm:max-w-4xl w-full mx-auto my-auto p-4'>
+                        <div className='p-6 bg-gray-100 rounded-lg shadow-lg'>
 
-                            <div className="flex justify-between">
+                            <div className='flex justify-between'>
                                 <Title title={'Schüler Hinzufügen'} className={'text-2xl font-semibold text-gray-800'} />
                                 <ExitButton onClick={toggleForm} />
                             </div>
@@ -230,10 +230,10 @@ export const StudentInfoBox = ({ isVisible, toggleInfo, student, deleteStudent }
     return (
         <>
             {isVisible && (
-                <div className="flex justify-center fixed top-0 left-0 w-full h-full backdrop-brightness-50 backdrop-blur-sm overflow-y-auto z-20">
-                    <div className="sm:max-w-4xl w-full mx-auto my-auto p-4">
-                        <div className="p-6 bg-gray-100 rounded-lg shadow-lg">
-                            <div className="flex justify-between">
+                <div className='flex justify-center fixed top-0 left-0 w-full h-full backdrop-brightness-50 backdrop-blur-sm overflow-y-auto z-20'>
+                    <div className='sm:max-w-4xl w-full mx-auto my-auto p-4'>
+                        <div className='p-6 bg-gray-100 rounded-lg shadow-lg'>
+                            <div className='flex justify-between'>
 
                                 <Title title={'Schüler Info'} className={'text-2xl font-semibold text-gray-800'} />
 
@@ -243,7 +243,7 @@ export const StudentInfoBox = ({ isVisible, toggleInfo, student, deleteStudent }
 
                             <InfoForm student={student} />
 
-                            <div className="flex w-full mt-6">
+                            <div className='flex w-full mt-6'>
 
                                 <Button content={'Schüler Bearbeiten WIP'}
                                     className={'px-6 py-2 mr-3 w-full rounded-lg bg-gray-300 text-gray-400 font-semibold hover:bg-gray-300 transition-al'} />
